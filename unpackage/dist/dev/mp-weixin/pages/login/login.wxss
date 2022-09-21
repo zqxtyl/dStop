@@ -1,0 +1,57 @@
+.app.data-v-b237504c {
+  background-color: #FEFEFE;
+}
+.app .tab_nav.data-v-b237504c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  padding: 20px;
+  width: 500rpx;
+  background-color: #FFFFFF;
+}
+.app .tab_nav .navTitle.data-v-b237504c {
+  height: 90rpx;
+  line-height: 90rpx;
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  font-family: Alibaba PuHuiTi;
+  color: #333;
+}
+.app .main.data-v-b237504c {
+  margin-top: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app .main .inputs.data-v-b237504c {
+  width: 600rpx;
+}
+.app .active.data-v-b237504c {
+  position: relative;
+  font-weight: 700;
+  font-size: 50rpx;
+}
+.app .text.data-v-b237504c {
+  color: #ccc;
+  font-size: 25rpx;
+  padding-left: 45rpx;
+  margin-top: -30rpx;
+}
+.app .buttons.data-v-b237504c {
+  margin-top: 80rpx;
+  margin-left: 40rpx;
+  width: 90%;
+}
+.app .active.data-v-b237504c::after {
+  content: "";
+  position: absolute;
+  width: 100rpx;
+  height: 4rpx;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  margin: auto;
+}
+

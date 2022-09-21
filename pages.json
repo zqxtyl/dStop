@@ -1,0 +1,65 @@
+{
+  "pages": [{
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+
+    },
+    {
+      "path": "pages/home/home",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    }, {
+      "path": "pages/issue/issue",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+
+    }, {
+      "path": "pages/expert/expert",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    }, {
+      "path": "pages/my/my",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+
+    }
+  ],
+  "tabBar": {
+    "list": [{
+        "text": "首页",
+        "pagePath": "pages/home/home"
+      },
+      {
+        "text": "我的出单",
+        "pagePath": "pages/issue/issue"
+      },
+      {
+        "text": "邀请达人",
+        "pagePath": "pages/expert/expert"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/my/my"
+      }
+
+    ]
+  },
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "DEMO",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "uniIdRouter": {}
+}
