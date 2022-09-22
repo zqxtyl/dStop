@@ -4,7 +4,8 @@
     "pages/home/home",
     "pages/issue/issue",
     "pages/expert/expert",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/login/enter-password"
   ],
   "subPackages": [],
   "window": {

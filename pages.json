@@ -33,6 +33,9 @@
         "enablePullDownRefresh": false
       }
 
+    },
+    {
+      "path": "pages/login/enter-password"
     }
   ],
   "tabBar": {
