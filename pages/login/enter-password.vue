@@ -24,7 +24,7 @@
       </u--form>
     </view>
     <view class="buttons">
-      <u-button @click="submit" shape='circle' color='#808080' size="large" text="确定"></u-button>
+      <u-button @click="submit" shape='circle' :color='buttonColor' size="large" text="确定"></u-button>
     </view>
   </view>
 </template>
@@ -53,6 +53,7 @@
           newPwd: '',
           confirmPwd: ''
         },
+        buttonColor: '#808080',
         rules: {
           newPwd: [{
               required: true,
@@ -104,6 +105,19 @@
           uni.$u.toast('设置失败')
         })
       },
+      onChangeButton() {
+        this.buttonColor = '#0078D7'
+      }
+    },
+    watch: {
+      form: {
+        handler(newValue, oldValue) {
+          if (newValue.newPwd == newValue.confirmPwd) {
+            this.onChangeButton()
+          }
+        },
+        deep: true
+      }
     }
   }
 </script>

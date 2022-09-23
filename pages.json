@@ -38,6 +38,12 @@
       "path": "pages/login/enter-password"
     }
   ],
+  "subPackages": [{
+    "root": "subpkg",
+    "pages": [{
+      "path": "goods_detail/goods_detail"
+    }]
+  }],
   "tabBar": {
     "list": [{
         "text": "首页",

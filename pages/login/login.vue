@@ -46,15 +46,16 @@
                 </view>
               </u-form-item>
               <u-form-item>
-                <u-radio-group v-model="value" placement="row">
-                  <u-radio size="35" labelColor='#CCC' labelSize="25" shape="square" label="已阅读并同意">
+                <u-radio-group v-model="form.value" placement="row">
+                  <u-radio size="35" @change="radioChange" labelColor='#CCC' labelSize="25" shape="square"
+                    label="已阅读并同意">
                   </u-radio>
                 </u-radio-group>
               </u-form-item>
             </u--form>
           </view>
           <view class="buttons">
-            <u-button @click="submit" shape='circle' color='#808080' size="large" text="登录"></u-button>
+            <u-button @click="submit" shape='circle' :color='buttonColor' size="large" text="登录"></u-button>
           </view>
         </view>
       </view>
@@ -65,10 +66,10 @@
       <view>
         <view class="text">未注册的手机号登录成功后将自动注册</view>
         <view class="main">
-          <u-form :model='fromDate' ref="uForm">
+          <u-form :model='formDate' ref="uForm">
             <u-form-item prop="phone">
               <view class="inputs">
-                <u-input fontSize='35' placeholder="请输入手机号" border="bottom" v-model="formDate.phone">
+                <u-input fontSize='35' maxlength="11" placeholder="请输入手机号" border="bottom" v-model="formDate.phone">
                 </u-input>
               </view>
             </u-form-item>
@@ -77,8 +78,9 @@
               </u-input>
             </u-form-item>
             <u-form-item>
-              <u-radio-group v-model="value" placement="row">
-                <u-radio size="35" labelColor='#CCC' labelSize="25" shape="square" label="已阅读并同意">
+              <u-radio-group v-model="formDate.value" placement="row">
+                <u-radio @change="radioChangeT" size="35" labelColor='#CCC' labelSize="25" shape="square"
+                  label="已阅读并同意">
                 </u-radio>
               </u-radio-group>
             </u-form-item>
@@ -86,7 +88,7 @@
         </view>
       </view>
       <view class="buttons">
-        <u-button shape='circle' color='#808080' size="large" text="登录"></u-button>
+        <u-button shape='circle' @click="passwordLogin" :color='buttonColor' size="large" text="登录"></u-button>
       </view>
       <!-- 密码登录 -->
     </view>
@@ -97,7 +99,8 @@
   import {
     getPhoneCode,
     refreshToken,
-    goLogin
+    goLogin,
+    pwdLogin
   } from '@/api/user.js'
   export default {
     data() {
@@ -118,16 +121,19 @@
           title: "密码登录"
         }],
         form: {
-          phone: null,
-          code: null,
+          phone: '',
+          code: '',
+          value: true,
         },
-        status: true,
+        status: true, //发送验证码状态
         formDate: {
           phone: '',
-          password: ''
+          password: '',
+          value: true
         },
-        value: false,
+        sum: 0,
         userInfo: {},
+        buttonColor: '#808080',
         tips: '',
         rules: {
           'phone': [{
@@ -150,19 +156,31 @@
           this.status = false
         }
       },
+      onChangeButton() {
+        this.buttonColor = '#0078D7'
+      },
       checked(index) {
         this.isActive = index
+        this.buttonColor = '#808080'
         this.form = {
-            phone: null,
-            code: null,
+            phone: '',
+            code: '',
+            value: true
           },
           this.formDate = {
             phone: '',
-            password: ''
+            password: '',
+            value: true
           }
       },
       codeChange(text) {
         this.tips = text;
+      },
+      radioChange() {
+        this.form.value = false
+      },
+      radioChangeT() {
+        this.formDate.value = false
       },
       async getCode() {
         if (this.$refs.uCode.canGetCode) {
@@ -175,7 +193,6 @@
             username: this.form.phone,
             todo: 'login'
           })
-          console.log(data.code)
           this.userInfo = data
           setTimeout(() => {
             uni.hideLoading();
@@ -188,33 +205,86 @@
           uni.$u.toast('倒计时结束后再发送');
         }
       },
-      submit() {
-        this.$refs.uForm.validate().then(async res => {
-          const data = await goLogin({
-            username: this.form.phone,
-            smsCode: this.form.code,
-            inviterId: 2
-          })
-          console.log(data)
-          uni.$u.toast('验证成功')
-          if (this.form.code && !this.userInfo.code) {
-            uni.navigateTo({
-              url: '/pages/login/enter-password'
-            })
-          } else {
-            uni.$u.toast('验证码不能为空')
-          }
-        }).catch(errors => {
-          uni.$u.toast('验证失败')
+      async submit() {
+        if (!this.form.phone || !this.form.code) {
+          uni.$u.toast('输入不能为空')
+          return
+        }
+        if (this.form.value) {
+          uni.$u.toast('请勾选协议')
+          return
+        }
+        const data = await goLogin({
+          username: this.form.phone,
+          smsCode: this.form.code,
+          inviterId: 2
         })
+        this.userInfo = data.data
+        this.$store.commit('user/getUsrInfo', this.userInfo)
+        this.$store.commit('user/getToken', this.userInfo.access_token)
+        if (this.form.code && !this.userInfo.code) {
+          uni.navigateTo({
+            url: '/pages/login/enter-password'
+          })
+        }
+        // this.$refs.uForm.validate().then(async res => {
+        //   uni.$u.toast('验证成功')
+        //   } else {
+        //     uni.$u.toast('验证码不能为空')
+        //   }
+        // }).catch(errors => {
+        //   uni.$u.toast('验证失败')
+        // })
         this.status = false
       },
+      async passwordLogin() {
+        if (!this.formDate.password && !this.formDate.phone) {
+          uni.$u.toast('输入不能为空')
+          return
+        }
+        if (this.formDate.value) {
+          uni.$u.toast('请勾选协议')
+          return
+        }
+        const data = await pwdLogin(({
+          username: this.formDate.phone,
+          passwd: this.formDate.password
+        }))
+        this.userInfo = data.data
+        this.$store.commit('user/getUsrInfo', this.userInfo)
+        this.$store.commit('user/getToken', this.userInfo.access_token)
+        if (this.formDate.password && !this.userInfo.code) {
+          uni.switchTab({
+            url: '/pages/home/home'
+          })
+        }
+      }
 
     },
     onReady() {
       this.$refs.uForm.setRules(this.rules);
     },
-    onLoad() {}
+    onLoad() {
+
+    },
+    watch: {
+      form: {
+        handler(newValue, oldValue) {
+          if (newValue.phone.length == 11 && newValue.code.length == 4 && !newValue.value) {
+            this.onChangeButton()
+          }
+        },
+        deep: true
+      },
+      formDate: {
+        handler(newValue, oldValue) {
+          if (!newValue.value && newValue.phone.length == 11) {
+            this.onChangeButton()
+          }
+        },
+        deep: true
+      }
+    }
   }
 </script>
 

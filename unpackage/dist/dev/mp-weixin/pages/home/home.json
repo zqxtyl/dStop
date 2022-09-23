@@ -1,5 +1,10 @@
 {
   "navigationBarTitleText": "",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "u-tabs": "/uni_modules/uview-ui/components/u-tabs/u-tabs",
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
+    "ug-goods": "/components/ug-goods/ug-goods",
+    "u-popup": "/uni_modules/uview-ui/components/u-popup/u-popup"
+  }
 }
