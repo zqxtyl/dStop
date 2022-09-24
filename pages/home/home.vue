@@ -34,12 +34,26 @@
             fontWeight: 700,
             transform: 'scale(1)'
         }" itemStyle="padding-left: 15rpx; padding-right: 15rpx; height: 60rpx;">
-        <view slot="right" style="padding-left: 4rpx;" @tap="show = true">
+        <view class=".dropdown" slot="right" style="padding-left: 4rpx;" @tap="show = true">
           <u-icon name="arrow-down-fill" size="40" bold></u-icon>
         </view>
       </u-tabs>
       <view class="u-list-item" v-if="current==0">
-        品质优选
+        <view class="">
+          <view>
+            <view class="tab">
+              <view v-for="(item,index) in screen.list" class="tab-item">
+                <text class="tab-txt" :class="screen.currentIndex===index?'blue':'black'"
+                  @click="toggleclass(index)">{{item.name}}</text>
+                <view class="icon" v-if="item.name!=='综合筛选'">
+                  <view class="iconfont icon-Down;" :class="item.status===1?'black':'gray'"></view>
+                  <view class="iconfont icon-up" :class="item.status===2?'black':'gray'"></view>
+                </view>
+              </view>
+
+            </view>
+          </view>
+        </view>
         <ug-goods></ug-goods>
       </view>
       <view class="u-list-item" v-if="current==1">
@@ -54,20 +68,26 @@
       <view class="u-list-item" v-if="current==4">
         服饰内衣
       </view>
-      <!-- 弹出层 -->
-      <view>
-        <u-popup :show="show" @close="close" @open="open">
-          <view>
-            <text>出淤泥而不染，濯清涟而不妖</text>
-          </view>
-        </u-popup>
-      </view>
-      <!-- 弹出层 -->
     </view>
+    <!-- 弹层 -->
+    <view class="">
+      <u-popup :show="show" mode="center" @close="close" @open="open">
+        <view v-for="(item,i) in list1" :key="i" style="width: 750rpx;display: felx;text-align: center;">
+          <view :class="i==current?'blue':'black'" @click="changeTabs(i)"
+            style="background-color: #ccc;width: 180rpx;border-radius: 15rpx;margin: 5rpx;">
+            {{item.name}}
+          </view>
+        </view>
+      </u-popup>
+    </view>
+
   </view>
 </template>
 
 <script>
+  import {
+    getHome
+  } from '@/api/home.js'
   export default {
     data() {
       return {
@@ -91,15 +111,33 @@
           }
         ],
         current: 0,
-        show: false
+        show: false,
+        screen: {
+          currentIndex: 0,
+          list: [{
+              name: '综合筛选',
+              status: 0,
+            },
+            {
+              name: "销量排序",
+              status: 0,
+              key: 'all'
+            },
+            {
+              name: "佣金排序",
+              status: 0,
+              key: 'sale_count'
+            },
+            {
+              name: "售价排序",
+              status: 0,
+              key: 'min_price'
+            },
+          ],
+        }
       };
     },
     methods: {
-      getPush() {
-        uni.navigateTo({
-          url: '/subpkg/goods_detail/goods_detail'
-        })
-      },
       goToDescription() {
         uni.navigateTo({
           url: '/subpkg/goods_detail/goods_detail'
@@ -108,13 +146,66 @@
       changeOption(e) {
         this.current = e.index
       },
+      changeTabs(i) {
+        this.current = i
+        this.show = false
+      },
+      toggleclass(index) {
+        //命名一下当前active的标签index
+        let chooseindex = this.screen.currentIndex
+        //获取一下当前active的标签
+        let choose = this.screen.list[chooseindex]
+        //判定点击的标签是不是当前active的标签
+        if (index === this.screen.currentIndex) {
+          //是的话修改标签的status属性
+          choose.status = choose.status === 1 ? 2 : 1
+        } else {
+          //如果点击标签不是当前active标签
+          //初始化标签的status属性
+          choose.status = 0
+          //让点击标签成为当前active标签
+          this.screen.currentIndex = index
+          //修改active标签的status属性
+          this.screen.list[index].status = 1
+        }
+      },
+      async getHome() {
+        const data = await getHome()
+        console.log(data)
+      },
       close() {
         this.show = false
         // console.log('close');
       },
-      open() {
-
-      }
+      open(e) {
+        // console.log('open', e)
+      },
+      change(e) {
+        // console.log('change', e)
+      },
+      //筛选点击
+      tabClick(index) {
+        if (this.filterIndex === index && index !== 2) {
+          return;
+        }
+        this.filterIndex = index;
+        if (index === 2) {
+          this.priceOrder = this.priceOrder === 1 ? 2 : 1;
+        } else {
+          this.priceOrder = 0;
+        }
+        uni.pageScrollTo({
+          duration: 300,
+          scrollTop: 0
+        })
+        this.loadData('refresh', 1);
+        uni.showLoading({
+          title: '正在加载'
+        })
+      },
+    },
+    onLoad() {
+      this.getHome()
     }
   }
 </script>
@@ -141,5 +232,67 @@
 
       .mian-item {}
     }
+
+    //阿里图标库找的图标
+    /* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+
+    .iconfont {
+      font-family: "iconfont" !important;
+      font-size: 32rpx;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 14rpx;
+      color: lightgray;
+    }
+
+    .icon-jiangxu:before {
+      content: "\e6cc";
+    }
+
+    .icon-shengxu:before {
+      content: "\e6cf";
+    }
+
+    //切换颜色备用的css
+    .black {
+      color: black;
+    }
+
+    .blue {
+      color: blue;
+    }
+
+    .gray {
+      color: lightgray;
+    }
+
+    //备用内容到此
+
+    .tab {
+      width: 100%;
+      height: 88rpx;
+      display: flex;
+      justify-content: center;
+    }
+
+    .tab-item {
+      display: inline-flex;
+      width: 20%;
+      height: 88rpx;
+      margin: 0 20rpx;
+      font-size: 25rpx
+    }
+
+    .tab-txt {
+      line-height: 88rpx;
+    }
+
+    .icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
   }
 </style>

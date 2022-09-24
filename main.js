@@ -6,6 +6,7 @@ import store from '@/store/index.js'
 // main.js，注意要在use方法之后执行
 // import uView from 'uview-ui'
 // Vue.use(uView)
+import './static/css/iconfont.css'
 import uView from '@/uni_modules/uview-ui'
 Vue.use(uView)
 // 如此配置即可

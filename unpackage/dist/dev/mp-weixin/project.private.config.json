@@ -14,6 +14,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "详情",
+          "pathName": "subpkg/goods_detail/goods_detail",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

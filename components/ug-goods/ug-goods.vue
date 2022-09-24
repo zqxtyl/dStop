@@ -36,6 +36,9 @@
 </template>
 
 <script>
+  import {
+    getGoodsDetail
+  } from '@/api/home.js'
   export default {
     name: 'ug-goods',
     data() {
@@ -44,7 +47,9 @@
       }
     },
     methods: {
-      getGoodsDetail() {
+      async getGoodsDetail() {
+        const data = await getGoodsDetail()
+        console.log(data)
         uni.navigateTo({
           url: '/subpkg/goods_detail/goods_detail'
         })

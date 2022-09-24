@@ -26,6 +26,7 @@
 /* 文章场景相关 */
 .app {
   padding: 15rpx;
+  /* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
 }
 .app swiper {
   height: 330rpx;
@@ -40,5 +41,50 @@
   display: flex;
   justify-content: space-between;
   margin-top: 25rpx;
+}
+.app .iconfont {
+  font-family: "iconfont" !important;
+  font-size: 32rpx;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 14rpx;
+  color: lightgray;
+}
+.app .icon-jiangxu:before {
+  content: "\e6cc";
+}
+.app .icon-shengxu:before {
+  content: "\e6cf";
+}
+.app .black {
+  color: black;
+}
+.app .blue {
+  color: blue;
+}
+.app .gray {
+  color: lightgray;
+}
+.app .tab {
+  width: 100%;
+  height: 88rpx;
+  display: flex;
+  justify-content: center;
+}
+.app .tab-item {
+  display: inline-flex;
+  width: 20%;
+  height: 88rpx;
+  margin: 0 20rpx;
+  font-size: 25rpx;
+}
+.app .tab-txt {
+  line-height: 88rpx;
+}
+.app .icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
