@@ -25,7 +25,8 @@
       </view>
     </view>
     <view class="goods">
-      <u-tabs :current="current" @change="changeOption" :list="list1" lineWidth="30" lineColor="#fff" :activeStyle="{
+      <u-tabs keyName="title" :current="current" @change="changeOption" :list="categoryList" lineWidth="30"
+        lineColor="#fff" :activeStyle="{
             color: '#F59A23',
             fontWeight: 700,
             transform: 'scale(1.08)'
@@ -54,7 +55,7 @@
             </view>
           </view>
         </view>
-        <ug-goods></ug-goods>
+        <ug-goods :list='products'></ug-goods>
       </view>
       <view class="u-list-item" v-if="current==1">
         视频饮料
@@ -72,7 +73,7 @@
     <!-- 弹层 -->
     <view class="">
       <u-popup :show="show" mode="center" @close="close" @open="open">
-        <view v-for="(item,i) in list1" :key="i" style="width: 750rpx;display: felx;text-align: center;">
+        <view v-for="(item,i) in screen.list" :key="i" style="width: 750rpx;display: felx;text-align: center;">
           <view :class="i==current?'blue':'black'" @click="changeTabs(i)"
             style="background-color: #ccc;width: 180rpx;border-radius: 15rpx;margin: 5rpx;">
             {{item.name}}
@@ -88,28 +89,22 @@
   import {
     getHome
   } from '@/api/home.js'
+  import ugGoods from '@/components/ug-goods/ug-goods.vue'
   export default {
+    components: {
+      ugGoods
+    },
     data() {
       return {
+        homeList: {},
+        products: [],
+        sorts: {},
         list3: [
           'https://cdn.uviewui.com/uview/swiper/swiper3.png',
           'https://cdn.uviewui.com/uview/swiper/swiper2.png',
           'https://cdn.uviewui.com/uview/swiper/swiper1.png',
         ],
-        list1: [{
-            name: '品质优选'
-          },
-          {
-            name: '视频饮料',
-          }, {
-            name: '智能家居',
-          }, {
-            name: '母婴用品'
-          },
-          {
-            name: '服饰内衣'
-          }
-        ],
+        categoryList: [],
         current: 0,
         show: false,
         screen: {
@@ -170,7 +165,12 @@
         }
       },
       async getHome() {
-        const data = await getHome()
+        const
+          data = await getHome()
+        this.homeList = data.data
+        this.products = data.data.products
+        this.categoryList = data.data.cates
+        this.sorts = data.sorts
         console.log(data)
       },
       close() {
@@ -205,6 +205,9 @@
       },
     },
     onLoad() {
+      this.getHome()
+    },
+    mounted() {
       this.getHome()
     }
   }

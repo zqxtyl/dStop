@@ -2,20 +2,20 @@
   <view>
     <view class="goods">
       <view class="images">
-        <img @click='getGoodsDetail' style='width: 350rpx;height: 350rpx;' src="@/static/cpzt.png" alt="">
+        <img @click='getGoodsDetail' style='width: 350rpx;height: 350rpx;' :src="list[0].imgs[0]" alt="">
       </view>
       <view class="text">
         <view>
-          <p style='font-size: 25rpx; font-weight: 700;'>产品名称xxxxxxxx</p>
+          <p style='font-size: 25rpx; font-weight: 700;'>{{list[0].title||"商品名称"}}</p>
         </view>
         <view class="text2">
           <view class="text3">
             <view class="box">
-              <p style='font-size: 20rpx; color: #fff;'>￥3</p>
+              <p style='font-size: 20rpx; color: #fff;'>￥{{list[0].price||8}}</p>
               <p style='font-size: 20rpx; color: #fff;'>平台补贴</p>
             </view>
             <view class="box2">
-              <p style='font-size: 20rpx; color: #fff;'>3%</p>
+              <p style='font-size: 20rpx; color: #fff;'>{{list[0].commission_rate||20}}%</p>
               <p style='font-size: 20rpx; color: #fff;'>佣金</p>
             </view>
           </view>
@@ -23,10 +23,10 @@
           </view>
           <view>
             <view class="rightBox">
-              <p style='color: blue; font-size: 20rpx; font-weight: 700;'>剩余：300</p>
+              <p style='color: blue; font-size: 20rpx; font-weight: 700;'>剩余：{{list[0].leftTasks||300}}</p>
             </view>
             <view class="rightBox2">
-              <p style='color: #717171; font-size: 20rpx;'>到手价：9.9</p>
+              <p style='color: #717171; font-size: 20rpx;'>到手价：{{list[0].price||3}}</p>
             </view>
           </view>
         </view>
@@ -41,6 +41,11 @@
   } from '@/api/home.js'
   export default {
     name: 'ug-goods',
+    props: {
+      list: {
+        type: Array,
+      }
+    },
     data() {
       return {
 
@@ -100,7 +105,8 @@
         }
 
         .rightBox2 {
-          margin-left: 20rpx;
+          margin-left: 15rpx;
+          width: 150rpx;
         }
       }
     }

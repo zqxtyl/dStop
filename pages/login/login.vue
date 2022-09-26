@@ -102,6 +102,9 @@
     goLogin,
     pwdLogin
   } from '@/api/user.js'
+  import {
+    setStorage
+  } from '@/utils/location.js'
   export default {
     data() {
       var validatePass = (rule, value, callback) => {
@@ -133,7 +136,7 @@
         },
         sum: 0,
         userInfo: {},
-        buttonColor: '#808080',
+        buttonColor: '#EC6548',
         tips: '',
         rules: {
           'phone': [{
@@ -214,14 +217,18 @@
           uni.$u.toast('请勾选协议')
           return
         }
-        const data = await goLogin({
+        const {
+          data
+        } = await goLogin({
           username: this.form.phone,
           smsCode: this.form.code,
           inviterId: 2
         })
-        this.userInfo = data.data
-        this.$store.commit('user/getUsrInfo', this.userInfo)
-        this.$store.commit('user/getToken', this.userInfo.access_token)
+        this.userInfo = data
+        console.log(data)
+        this.$store.commit('user/getUsrInfo', data)
+        this.$store.commit('user/getToken', data.access_token)
+        setStorage('TOKEN', data.access_token)
         if (this.form.code && !this.userInfo.code) {
           uni.navigateTo({
             url: '/pages/login/enter-password'
@@ -251,6 +258,7 @@
           passwd: this.formDate.password
         }))
         this.userInfo = data.data
+        console.log(data)
         this.$store.commit('user/getUsrInfo', this.userInfo)
         this.$store.commit('user/getToken', this.userInfo.access_token)
         if (this.formDate.password && !this.userInfo.code) {
