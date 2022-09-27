@@ -56,7 +56,7 @@
         const data = await getGoodsDetail()
         console.log(data)
         uni.navigateTo({
-          url: '/subpkg/goods_detail/goods_detail'
+          url: `/subpkg/goods_detail/goods_detail`
         })
       }
     }

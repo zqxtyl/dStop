@@ -5,7 +5,8 @@
     "pages/issue/issue",
     "pages/expert/expert",
     "pages/my/my",
-    "pages/login/enter-password"
+    "pages/login/enter-password",
+    "pages/upgrade/upgrade"
   ],
   "subPackages": [
     {

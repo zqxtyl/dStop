@@ -36,6 +36,9 @@
     },
     {
       "path": "pages/login/enter-password"
+    },
+    {
+      "path": "pages/upgrade/upgrade"
     }
   ],
   "subPackages": [{

@@ -7,7 +7,7 @@
         <swiper-item v-for="(item, i) in list3" :key="i">
           <view class="swiper-item">
             <!-- 动态绑定图片的 src 属性 -->
-            <image :src="item" @click="goToDescription"></image>
+            <image :src="item" @click="goToDescription(i)"></image>
           </view>
         </swiper-item>
       </swiper>
@@ -133,9 +133,9 @@
       };
     },
     methods: {
-      goToDescription() {
+      goToDescription(id) {
         uni.navigateTo({
-          url: '/subpkg/goods_detail/goods_detail'
+          url: `/subpkg/goods_detail/goods_detail`
         })
       },
       changeOption(e) {

@@ -304,9 +304,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-weight: 700;
-      padding: 20px;
-      width: 500rpx;
+      padding: 36px;
+      width: 550rpx;
       background-color: #FFFFFF;
     }
 
@@ -315,7 +314,7 @@
       line-height: 90rpx;
       width: 100%;
       text-align: center;
-      font-size: 32rpx;
+      font-size: 40rpx;
       font-family: Alibaba PuHuiTi;
       color: #333;
     }
@@ -334,7 +333,7 @@
     .active {
       position: relative;
       font-weight: 700;
-      font-size: 50rpx;
+      font-size: 55rpx;
     }
 
     .text {
