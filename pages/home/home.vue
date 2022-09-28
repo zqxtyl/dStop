@@ -2,12 +2,13 @@
   <view class="app">
     <view class="swiper">
       <!-- 轮播图区域 -->
-      <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" :circular="true">
+      <swiper indicator-color='#CCCCCC' :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000"
+        :circular="true" indicator-active-color='#fff'>
         <!-- 循环渲染轮播图的 item 项 -->
         <swiper-item v-for="(item, i) in list3" :key="i">
           <view class="swiper-item">
             <!-- 动态绑定图片的 src 属性 -->
-            <image :src="item" @click="goToDescription(i)"></image>
+            <image :src="item" @click="goToDescription"></image>
           </view>
         </swiper-item>
       </swiper>
@@ -15,24 +16,24 @@
     </view>
     <view class="main">
       <view class="mian-item">
-        <img style='width: 210rpx;height: 150rpx; border-radius: 15rpx;' src="@/static/sqdj.png" alt="">
+        <img style='width: 220rpx;height: 160rpx; ' src="@/static/dq-qt.png" alt="">
       </view>
       <view class="mian-item">
-        <img style='width: 210rpx;height: 150rpx; border-radius: 15rpx;' src="@/static/xszd.png" alt="">
+        <img style='width: 220rpx;height: 160rpx; ' src="@/static/xszd.png" alt="">
       </view>
       <view class="mian-item">
-        <img style='width: 210rpx;height: 150rpx; border-radius: 15rpx;' src="@/static/jjdr.png" alt="">
+        <img style='width: 220rpx;height: 160rpx;' src="@/static/jjdr.png" alt="">
       </view>
     </view>
     <view class="goods">
       <u-tabs keyName="title" :current="current" @change="changeOption" :list="categoryList" lineWidth="30"
         lineColor="#fff" :activeStyle="{
-            color: '#F59A23',
+            color: '#000000',
             fontWeight: 700,
             transform: 'scale(1.08)'
         }" :inactiveStyle="{
             color: '#000000',
-            fontWeight: 700,
+            fontSize:'28rpx',
             transform: 'scale(1)'
         }" itemStyle="padding-left: 15rpx; padding-right: 15rpx; height: 60rpx;">
         <view class=".dropdown" slot="right" style="padding-left: 4rpx;" @tap="show = true">
@@ -133,7 +134,7 @@
       };
     },
     methods: {
-      goToDescription(id) {
+      goToDescription() {
         uni.navigateTo({
           url: `/subpkg/goods_detail/goods_detail`
         })
@@ -164,7 +165,7 @@
           this.screen.list[index].status = 1
         }
       },
-      async getHome() {
+      async getHomeList() {
         const
           data = await getHome()
         this.homeList = data.data
@@ -205,10 +206,10 @@
       },
     },
     onLoad() {
-      this.getHome()
+      this.getHomeList()
     },
-    mounted() {
-      this.getHome()
+    onShow() {
+      this.getHomeList()
     }
   }
 </script>
@@ -218,7 +219,7 @@
     padding: 15rpx;
 
     swiper {
-      height: 330rpx;
+      height: 386rpx;
 
       .swiper-item,
       image {
@@ -235,6 +236,11 @@
 
       .mian-item {}
     }
+
+    .goods {
+      background-color: #F5F5F5;
+    }
+
 
     //阿里图标库找的图标
     /* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */

@@ -38,7 +38,19 @@
       "path": "pages/login/enter-password"
     },
     {
-      "path": "pages/upgrade/upgrade"
+      "path": "pages/upgrade/upgrade",
+      "style": {
+        "navigationBarTitleText": "等级特权",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/accountNumber/index",
+      "style": {
+        "navigationBarTitleText": "账号管理",
+        "enablePullDownRefresh": false,
+        "backgroundColor": "#FFFFFF"
+      }
     }
   ],
   "subPackages": [{

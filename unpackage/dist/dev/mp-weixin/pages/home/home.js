@@ -98,16 +98,16 @@ var components
 try {
   components = {
     uTabs: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-tabs/u-tabs */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-tabs/u-tabs")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-tabs/u-tabs.vue */ 284))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-tabs/u-tabs */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-tabs/u-tabs")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-tabs/u-tabs.vue */ 309))
     },
     uIcon: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 292))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 317))
     },
     ugGoods: function() {
-      return __webpack_require__.e(/*! import() | components/ug-goods/ug-goods */ "components/ug-goods/ug-goods").then(__webpack_require__.bind(null, /*! @/components/ug-goods/ug-goods.vue */ 301))
+      return __webpack_require__.e(/*! import() | components/ug-goods/ug-goods */ "components/ug-goods/ug-goods").then(__webpack_require__.bind(null, /*! @/components/ug-goods/ug-goods.vue */ 326))
     },
     uPopup: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 308))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 333))
     }
   }
 } catch (e) {
@@ -131,7 +131,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  var m0 = __webpack_require__(/*! @/static/sqdj.png */ 158)
+  var m0 = __webpack_require__(/*! @/static/dq-qt.png */ 158)
 
   var m1 = __webpack_require__(/*! @/static/xszd.png */ 159)
 
@@ -274,7 +274,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _home = __webpack_require__(/*! @/api/home.js */ 163);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var ugGoods = function ugGoods() {__webpack_require__.e(/*! require.ensure | components/ug-goods/ug-goods */ "components/ug-goods/ug-goods").then((function () {return resolve(__webpack_require__(/*! @/components/ug-goods/ug-goods.vue */ 301));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+var _home = __webpack_require__(/*! @/api/home.js */ 163);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var ugGoods = function ugGoods() {__webpack_require__.e(/*! require.ensure | components/ug-goods/ug-goods */ "components/ug-goods/ug-goods").then((function () {return resolve(__webpack_require__(/*! @/components/ug-goods/ug-goods.vue */ 326));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -321,7 +322,7 @@ var _home = __webpack_require__(/*! @/api/home.js */ 163);function _interopRequi
 
   },
   methods: {
-    goToDescription: function goToDescription(id) {
+    goToDescription: function goToDescription() {
       uni.navigateTo({
         url: "/subpkg/goods_detail/goods_detail" });
 
@@ -352,7 +353,7 @@ var _home = __webpack_require__(/*! @/api/home.js */ 163);function _interopRequi
         this.screen.list[index].status = 1;
       }
     },
-    getHome: function getHome() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var data;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+    getHomeList: function getHomeList() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var data;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
 
                   (0, _home.getHome)());case 2:data = _context.sent;
                 _this.homeList = data.data;
@@ -393,10 +394,10 @@ var _home = __webpack_require__(/*! @/api/home.js */ 163);function _interopRequi
     } },
 
   onLoad: function onLoad() {
-    this.getHome();
+    this.getHomeList();
   },
-  mounted: function mounted() {
-    this.getHome();
+  onShow: function onShow() {
+    this.getHomeList();
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

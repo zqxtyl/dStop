@@ -29,7 +29,7 @@
   /* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
 }
 .app swiper {
-  height: 330rpx;
+  height: 386rpx;
 }
 .app swiper .swiper-item,
 .app swiper image {
@@ -41,6 +41,9 @@
   display: flex;
   justify-content: space-between;
   margin-top: 25rpx;
+}
+.app .goods {
+  background-color: #F5F5F5;
 }
 .app .iconfont {
   font-family: "iconfont" !important;

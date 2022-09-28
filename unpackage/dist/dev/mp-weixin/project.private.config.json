@@ -21,6 +21,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "个人中心",
+          "pathName": "pages/my/my",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "账号管理",
+          "pathName": "pages/accountNumber/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

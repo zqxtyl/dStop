@@ -6,7 +6,8 @@
     "pages/expert/expert",
     "pages/my/my",
     "pages/login/enter-password",
-    "pages/upgrade/upgrade"
+    "pages/upgrade/upgrade",
+    "pages/accountNumber/index"
   ],
   "subPackages": [
     {

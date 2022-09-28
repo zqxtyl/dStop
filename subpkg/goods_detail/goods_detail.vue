@@ -207,10 +207,10 @@
 
       <view class="buttons">
         <view class="buttons-item">
-          <button size="mini" style="background-color: #FFFFFF;color: #676767;">复制视频</button>
+          <button @click="copyVideo" size="mini" style="background-color: #FFFFFF;color: #676767;">复制视频</button>
         </view>
         <view>
-          <button size="mini" style="background-color: #FFFFFF;color: #676767;">上传视频</button>
+          <button @click="uploadVideo" size="mini" style="background-color: #FFFFFF;color: #676767;">上传视频</button>
         </view>
         <view>
           <button @click="cancelTask" size="mini"
@@ -232,7 +232,7 @@
     <view>
       <u-popup mode='center' :show="show" @close="close" round="10">
         <view style="width: 600rpx;height: 260rpx;display: flex;align-items: center;justify-content: center;">
-          <img style='width: 400rpx;height: 248rpx;' src="@/static/djbf.png" alt="">
+          <img style='width: 400rpx;height: 248rpx;margin-left: 40rpx;' src="@/static/djbf.png" alt="">
         </view>
         <view style="width: 600rpx; height: 46rpx;display: flex;justify-content: space-between;padding: 20rpx;">
           <view style="margin-left:68rpx ;" @click="show=false">
@@ -244,6 +244,7 @@
         </view>
       </u-popup>
     </view>
+
     <view>
       <u-popup safeAreaInsetBottom mode='bottom' :show="show" @close="close">
         <view style="width: 750rpx; height: 300rpx; padding: 20rpx;">
@@ -269,7 +270,7 @@
             </view>
           </view>
 
-          <view class="footer-bottom">
+          <view class="footer-bottom" style="margin-top: 50rpx;">
             <view style="text-align: center;" class="footer-bottom-left">
               <img style='width: 40rpx; height: 40rpx;' src="@/static/chuang.png" alt="">
               <p style='font-size: 23rpx;'>添加橱窗</p>
@@ -289,11 +290,217 @@
       </u-popup>
     </view>
     <!-- 弹窗 -->
+    <!-- 取消任务 -->
+    <view>
+      <u-popup mode='center' :show="cancelTaskStatus" @close="TaskClose">
+        <view style="width: 640rpx;height: 170rpx;">
+          <view style="display: flex;justify-content: center;align-items: center;">
+            <p style='color: #333333 ;font-weight: 700;font-size: 26rpx;margin-top: 54rpx;'>再次确认是否取消任务</p>
+          </view>
+        </view>
+        <view style="display: flex;width: 640rpx;height: 60rpx;justify-content: space-between;">
+          <view style="margin-left: 122rpx;" @click="pressError">
+            <p style='color: #888888;font-size: 26rpx;'>按错了</p>
+          </view>
+          <view style="margin-right: 106rpx;" @click="affirmCancl">
+            <p style='color: #D33D34;font-size: 26rpx;'>确认取消</p>
+          </view>
+        </view>
+      </u-popup>
+    </view>
 
+    <view>
+      <u-popup safeAreaInsetBottom mode='bottom' :show="cancelTaskStatus" @close="TaskClose">
+        <view style="width: 750rpx; height: 300rpx; padding: 20rpx;">
+          <view style="margin-left: 20rpx;">
+            <p style='color: #333333; font-size: 25rpx;font-weight: 700;'>选择抖音账号</p>
+          </view>
+          <view>
+            <view style="display: flex; margin-left: 20rpx;margin-top: 30rpx;align-content: center;">
+              <view style="width: 94rpx; height: 94rpx;border-radius: 47rpx;background-color: #D8D8D8;">
+              </view>
+              <view style="margin-left: 25rpx;margin-top: 10rpx;">
+                <p style='color: #333333;font-weight: 700;font-size: 25rpx;'>账号名称</p>
+                <view style="display: flex;align-items: center;margin-top: 8rpx;">
+                  <img style='width: 40rpx;height: 36rpx;' src="@/static/qt.png" alt=""><span
+                    style='color: #888888 ;font-size: 25rpx;margin-left: 5rpx;'>青铜等级</span>
+                </view>
+              </view>
+              <view style="margin-left: 380rpx;margin-top: 10rpx;">
+                <u-radio-group v-model="value">
+                  <u-radio shape="circle" activeColor="red" size="40"></u-radio>
+                </u-radio-group>
+              </view>
+            </view>
+          </view>
+
+          <view class="footer-bottom" style="margin-top: 50rpx;">
+            <view style="text-align: center;" class="footer-bottom-left">
+              <img style='width: 40rpx; height: 40rpx;' src="@/static/chuang.png" alt="">
+              <p style='font-size: 23rpx;'>添加橱窗</p>
+            </view>
+            <view class="footer-bottom-right" @click="getTask">
+              <view style="display: flex;">
+                <view>
+                  <p style='margin-right: 15rpx;'>+3补贴</p>
+                </view>
+                <view>
+                  <p style='margin-left: 15rpx;'>立即领取</p>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </u-popup>
+    </view>
+    <!-- 取消任务 -->
+    <!-- 上传视频 -->
+    <view>
+      <u-popup mode='center' :show="uploadVideoStatus" @close="uploadVideoShow" round="10">
+        <view style="width: 440rpx;height: 480rpx;">
+          <view style="margin-left: 18rpx;margin-top: 15rpx;margin-bottom: 15rpx;">
+            <p style='color: #000000 ;font-weight: 700;font-size: 23rpx;'>复制已发布的抖音视频分享链接</p>
+          </view>
+          <view style="display: flex;align-items: center;justify-content: center;">
+            <view style="width: 420rpx;height: 280rpx;background-color: #D8D8D8;border: 1px solid #676767;">
+
+            </view>
+          </view>
+          <view style="margin-top: 20rpx;">
+            <view style="display: flex;align-items: center;justify-content: center;" @click="clickFnPasts">
+              <p style='color: #D33D34 ;font-size: 25rpx;'>点击粘贴视频链接</p>
+            </view>
+            <view @click="affirmSubmit"
+              style="display: flex;align-items: center;justify-content: center;margin-top: 28rpx;">
+              <p style='color: #888888 ;font-size: 25rpx;'>确认提交</p>
+            </view>
+          </view>
+        </view>
+      </u-popup>
+    </view>
+
+    <view>
+      <u-popup safeAreaInsetBottom mode='bottom' :show="uploadVideoStatus" @close="uploadVideoShow">
+        <view style="width: 750rpx; height: 300rpx; padding: 20rpx;">
+          <view style="margin-left: 20rpx;">
+            <p style='color: #333333; font-size: 25rpx;font-weight: 700;'>选择抖音账号</p>
+          </view>
+          <view>
+            <view style="display: flex; margin-left: 20rpx;margin-top: 30rpx;align-content: center;">
+              <view style="width: 94rpx; height: 94rpx;border-radius: 47rpx;background-color: #D8D8D8;">
+              </view>
+              <view style="margin-left: 25rpx;margin-top: 10rpx;">
+                <p style='color: #333333;font-weight: 700;font-size: 25rpx;'>账号名称</p>
+                <view style="display: flex;align-items: center;margin-top: 8rpx;">
+                  <img style='width: 40rpx;height: 36rpx;' src="@/static/qt.png" alt=""><span
+                    style='color: #888888 ;font-size: 25rpx;margin-left: 5rpx;'>青铜等级</span>
+                </view>
+              </view>
+              <view style="margin-left: 380rpx;margin-top: 10rpx;">
+                <u-radio-group v-model="value">
+                  <u-radio shape="circle" activeColor="red" size="40"></u-radio>
+                </u-radio-group>
+              </view>
+            </view>
+          </view>
+
+          <view class="footer-bottom" style="margin-top: 50rpx;">
+            <view style="text-align: center;" class="footer-bottom-left">
+              <img style='width: 40rpx; height: 40rpx;' src="@/static/chuang.png" alt="">
+              <p style='font-size: 23rpx;'>添加橱窗</p>
+            </view>
+            <view class="footer-bottom-right" @click="getTask">
+              <view style="display: flex;">
+                <view>
+                  <p style='margin-right: 15rpx;'>+3补贴</p>
+                </view>
+                <view>
+                  <p style='margin-left: 15rpx;'>立即领取</p>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </u-popup>
+    </view>
+
+    <!-- 上传视频 -->
+    <!-- 复制视频 -->
+    <view>
+      <u-popup mode='center' :show="copyVideoStatus" @close="uploadVideoShow" round="10">
+        <view style="width: 640rpx;height: 480rpx;">
+          <view style="display: flex;align-items: center;justify-content: center;">
+            <view
+              style="width: 620rpx;background-color: #D8D8D8;height: 400rpx;border: 1px solid #979797;margin-top: 10rpx;">
+            </view>
+          </view>
+          <view style="display: flex;justify-content: space-between;margin-top: 15rpx;">
+            <view style="margin-left: 80rpx;" @click="noMoreWarn">
+              <p style='color: #888888 ;font-size: 25rpx;'>下次不再提醒</p>
+            </view>
+            <view style="margin-right: 130rpx;" @click="affirmFn">
+              <p style='color: #D33D34 ;font-size: 25rpx;'>确认</p>
+            </view>
+          </view>
+          <view>
+
+          </view>
+        </view>
+      </u-popup>
+    </view>
+
+    <view>
+      <u-popup safeAreaInsetBottom mode='bottom' :show="copyVideoStatus" @close="uploadVideoShow">
+        <view style="width: 750rpx; height: 300rpx; padding: 20rpx;">
+          <view style="margin-left: 20rpx;">
+            <p style='color: #333333; font-size: 25rpx;font-weight: 700;'>选择抖音账号</p>
+          </view>
+          <view>
+            <view style="display: flex; margin-left: 20rpx;margin-top: 30rpx;align-content: center;">
+              <view style="width: 94rpx; height: 94rpx;border-radius: 47rpx;background-color: #D8D8D8;">
+              </view>
+              <view style="margin-left: 25rpx;margin-top: 10rpx;">
+                <p style='color: #333333;font-weight: 700;font-size: 25rpx;'>账号名称</p>
+                <view style="display: flex;align-items: center;margin-top: 8rpx;">
+                  <img style='width: 40rpx;height: 36rpx;' src="@/static/qt.png" alt=""><span
+                    style='color: #888888 ;font-size: 25rpx;margin-left: 5rpx;'>青铜等级</span>
+                </view>
+              </view>
+              <view style="margin-left: 380rpx;margin-top: 10rpx;">
+                <u-radio-group v-model="value">
+                  <u-radio shape="circle" activeColor="red" size="40"></u-radio>
+                </u-radio-group>
+              </view>
+            </view>
+          </view>
+
+          <view class="footer-bottom" style="margin-top: 50rpx;">
+            <view style="text-align: center;" class="footer-bottom-left">
+              <img style='width: 40rpx; height: 40rpx;' src="@/static/chuang.png" alt="">
+              <p style='font-size: 23rpx;'>添加橱窗</p>
+            </view>
+            <view class="footer-bottom-right" @click="getTask">
+              <view style="display: flex;">
+                <view>
+                  <p style='margin-right: 15rpx;'>+3补贴</p>
+                </view>
+                <view>
+                  <p style='margin-left: 15rpx;'>立即领取</p>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </u-popup>
+    </view>
+    <!-- 复制视频 -->
   </view>
 </template>
 
 <script>
+  import {
+    getGoodsDetail
+  } from '@/api/home.js'
   export default {
     data() {
       return {
@@ -304,10 +511,24 @@
         show: false,
         taskStatus: false, //是否领取
         grade: false, //等级
-        value: ''
+        value: false,
+        cancelTaskStatus: false,
+        uploadVideoStatus: false,
+        copyVideoStatus: false
       }
     },
     methods: {
+      async getDeatilList(id) {
+        const data = await getGoodsDetail({
+          id: id
+        })
+        console.log(data)
+        console.log(id)
+      },
+      onLoad(options) {
+        console.log(options.id)
+        this.getDeatilList(options.id)
+      },
       attentionFn() {
         this.attentionShow = !this.attentionShow
       },
@@ -317,20 +538,53 @@
         } else {
           this.show = true
         }
-
-
       },
       close() {
         this.show = false
         // console.log('close');
       },
+      TaskClose() {
+        this.cancelTaskStatus = false
+      },
       getUpgrade() {
+
         uni.navigateTo({
           url: '/pages/upgrade/upgrade'
         })
+
+
       },
       cancelTask() {
-
+        this.cancelTaskStatus = true
+      },
+      affirmCancl() {
+        uni.$u.toast('取消任务成功');
+      },
+      pressError() {
+        this.cancelTaskStatus = false
+      },
+      copyVideo() {
+        this.copyVideoStatus = true
+      },
+      noMoreWarn() {
+        this.copyVideoStatus = false
+      },
+      affirmFn() {
+        uni.$u.toast('确认');
+        this.copyVideoStatus = false
+      },
+      uploadVideo() {
+        this.uploadVideoStatus = true
+      },
+      clickFnPasts() {
+        uni.$u.toast('粘贴成功');
+      },
+      affirmSubmit() {
+        uni.$u.toast('提交成功');
+        this.uploadVideoStatus = false
+      },
+      uploadVideoShow() {
+        this.uploadVideoStatus = false
       }
     }
   }

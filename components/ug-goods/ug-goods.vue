@@ -2,7 +2,7 @@
   <view>
     <view class="goods">
       <view class="images">
-        <img @click='getGoodsDetail' style='width: 350rpx;height: 350rpx;' :src="list[0].imgs[0]" alt="">
+        <img @click='getGoodsDetail(list[0].id)' style='width: 350rpx;height: 350rpx;' :src="list[0].imgs[0]" alt="">
       </view>
       <view class="text">
         <view>
@@ -36,9 +36,6 @@
 </template>
 
 <script>
-  import {
-    getGoodsDetail
-  } from '@/api/home.js'
   export default {
     name: 'ug-goods',
     props: {
@@ -52,11 +49,9 @@
       }
     },
     methods: {
-      async getGoodsDetail() {
-        const data = await getGoodsDetail()
-        console.log(data)
+      async getGoodsDetail(id) {
         uni.navigateTo({
-          url: `/subpkg/goods_detail/goods_detail`
+          url: `/subpkg/goods_detail/goods_detail?id=${id}`
         })
       }
     }

@@ -45,12 +45,10 @@ fly.interceptors.response.use((response) => {
     } = response.data
     if (code == 401) {
       const data = refresh()
-      console.log(123)
     }
     return response.data
   },
   (err) => {
-    console.log(err)
     //发生网络错误后会走到这里
 
     return Promise.resolve("请求失败")
@@ -63,14 +61,14 @@ function IsCheckTimeOut() {
   return (currentTime - timeStamp) / 1000 > TimeOut
 }
 
-function refresh() {
-  uni.request({
-    url: 'http://121.43.156.131/api/auth/refresh',
-    success: (res) => {
-      console.log(res)
-    }
-  })
-}
+// function refresh() {
+//   uni.request({
+//     url: 'http://121.43.156.131/api/auth/refresh',
+//     success: (res) => {
+//       console.log(res)
+//     }
+//   })
+// }
 
 
 

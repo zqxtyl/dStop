@@ -1,3 +1,5 @@
 {
+  "navigationBarTitleText": "等级特权",
+  "enablePullDownRefresh": false,
   "usingComponents": {}
 }
