@@ -41,6 +41,7 @@
     props: {
       list: {
         type: Array,
+        default: []
       }
     },
     data() {

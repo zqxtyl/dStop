@@ -4,11 +4,11 @@
       <view class="titie-item">
         <view class="title-bottom">
           <view style="display: flex;justify-content: space-between;">
-            <view>
-              <p style='font-weight: 700;font-size: 32rpx;margin-left: 15rpx;'>视频补贴</p>
+            <view @click="goVideoTask">
+              <p style='font-weight: 700;font-size: 32rpx;margin-left: 15rpx;'>视频任务</p>
             </view>
             <view style="display: flex;align-items: center;margin-right: 50rpx;color: #676767 ;font-size: 25rpx;">
-              <view>
+              <view @click="goVideoTask">
                 <p>全部订单</p>
               </view>
               <view class="iconfont icon-jiantouyou" style="font-size: 20rpx;margin-left: 8rpx;">
@@ -16,11 +16,11 @@
             </view>
           </view>
           <view class="title-bottom-item">
-            <view>
-              <img style='width: 52rpx;height: 52rpx;' src="@/static/dsc.png" alt="">
-              <p style='font-size: 25rpx;'>待上传</p>
+            <view @click="goVideoTaskStatus(i)" v-for="(item,i) in videoList" :key="i">
+              <img style='width: 52rpx;height: 52rpx;' :src="`/static/${item.img}.png`" alt="">
+              <p style='font-size: 25rpx;'>{{item.name}}</p>
             </view>
-            <view>
+            <!--            <view>
               <img style='width: 52rpx;height: 52rpx;' src="@/static/dsh.png" alt="">
               <p style='font-size: 25rpx;'>待审核</p>
             </view>
@@ -31,7 +31,7 @@
             <view>
               <img style='width: 52rpx;height: 52rpx;' src="@/static/ywc.png" alt="">
               <p style='font-size: 25rpx;'>已完成</p>
-            </view>
+            </view> -->
           </view>
         </view>
       </view>
@@ -43,7 +43,7 @@
           <p style='font-weight: 700;font-size: 30rpx;'>可提现</p>
         </view>
 
-        <view style="display: flex;align-items: center;color: #676767 ;margin-right: 15rpx;">
+        <view style="display: flex;align-items: center;color: #676767 ;margin-right: 15rpx;" @click="accountDetail">
           <p style='font-size: 25rpx;'>明细</p>
           <view class="iconfont icon-jiantouyou" style="font-size: 20rpx;margin-left: 8rpx;">
           </view>
@@ -131,13 +131,46 @@
   export default {
     data() {
       return {
+        videoList: [{
+            name: '待上传',
+            img: 'dsc',
+          },
+          {
+            name: "待审核",
+            img: 'dsh'
+          },
+          {
+            name: '未通过',
+            img: 'wtg'
+          },
+          {
+            name: "已完成",
+            img: 'ywc'
+          }
 
+
+        ]
       };
     },
     methods: {
       numberManage() {
         uni.navigateTo({
           url: '/pages/accountNumber/index'
+        })
+      },
+      accountDetail() {
+        uni.navigateTo({
+          url: '/pages/accountDetail/index'
+        })
+      },
+      goVideoTask() {
+        uni.navigateTo({
+          url: '/pages/videoTask/index'
+        })
+      },
+      goVideoTaskStatus(id) {
+        uni.navigateTo({
+          url: `/pages/videoTask/index?id=${id}`
         })
       }
     }

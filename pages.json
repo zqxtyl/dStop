@@ -51,6 +51,18 @@
         "enablePullDownRefresh": false,
         "backgroundColor": "#FFFFFF"
       }
+    },
+    {
+      "path": "pages/accountDetail/index",
+      "style": {
+        "navigationBarTitleText": "账号明细"
+      }
+    },
+    {
+      "path": "pages/videoTask/index",
+      "style": {
+        "navigationBarTitleText": "视频任务"
+      }
     }
   ],
   "subPackages": [{
@@ -62,19 +74,25 @@
   "tabBar": {
     "list": [{
         "text": "首页",
-        "pagePath": "pages/home/home"
+        "pagePath": "pages/home/home",
+        "iconPath": "static/y-sy.png"
+
       },
       {
         "text": "我的出单",
-        "pagePath": "pages/issue/issue"
+        "pagePath": "pages/issue/issue",
+        "iconPath": "static/w-cd.png"
+
       },
       {
         "text": "邀请达人",
-        "pagePath": "pages/expert/expert"
+        "pagePath": "pages/expert/expert",
+        "iconPath": "static/w-yqdr.png"
       },
       {
         "text": "我的",
-        "pagePath": "pages/my/my"
+        "pagePath": "pages/my/my",
+        "iconPath": "static/w-my.png"
       }
 
     ]

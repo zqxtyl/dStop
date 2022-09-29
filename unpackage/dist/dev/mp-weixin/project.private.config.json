@@ -30,9 +30,16 @@
           "scene": null
         },
         {
-          "name": "账号管理",
-          "pathName": "pages/accountNumber/index",
+          "name": "明细",
+          "pathName": "pages/accountDetail/index",
           "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "视频任务",
+          "pathName": "pages/videoTask/index",
+          "query": "id=2",
           "launchMode": "default",
           "scene": null
         }

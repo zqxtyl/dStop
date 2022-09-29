@@ -510,7 +510,7 @@
         attentionShow: false,
         show: false,
         taskStatus: false, //是否领取
-        grade: false, //等级
+        grade: true, //等级
         value: false,
         cancelTaskStatus: false,
         uploadVideoStatus: false,

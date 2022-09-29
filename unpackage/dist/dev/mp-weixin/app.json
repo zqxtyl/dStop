@@ -7,7 +7,9 @@
     "pages/my/my",
     "pages/login/enter-password",
     "pages/upgrade/upgrade",
-    "pages/accountNumber/index"
+    "pages/accountNumber/index",
+    "pages/accountDetail/index",
+    "pages/videoTask/index"
   ],
   "subPackages": [
     {
@@ -27,19 +29,23 @@
     "list": [
       {
         "text": "首页",
-        "pagePath": "pages/home/home"
+        "pagePath": "pages/home/home",
+        "iconPath": "static/y-sy.png"
       },
       {
         "text": "我的出单",
-        "pagePath": "pages/issue/issue"
+        "pagePath": "pages/issue/issue",
+        "iconPath": "static/w-cd.png"
       },
       {
         "text": "邀请达人",
-        "pagePath": "pages/expert/expert"
+        "pagePath": "pages/expert/expert",
+        "iconPath": "static/w-yqdr.png"
       },
       {
         "text": "我的",
-        "pagePath": "pages/my/my"
+        "pagePath": "pages/my/my",
+        "iconPath": "static/w-my.png"
       }
     ]
   },

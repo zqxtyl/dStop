@@ -8,6 +8,7 @@ import store from '@/store/index.js'
 // Vue.use(uView)
 import './static/css/iconfont.css'
 import uView from '@/uni_modules/uview-ui'
+Vue.prototype.$store = store
 Vue.use(uView)
 // 如此配置即可
 uni.$u.config.unit = 'rpx'

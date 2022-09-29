@@ -1,1 +1,1 @@
-<view>dsad1</view>
+<view><view><view>{{''+this.$store.state.user.token+''}}</view><video src="https://yishijie1.oss-cn-beijing.aliyuncs.com/mp4/1.mp4"></video><button data-event-opts="{{[['tap',[['saveVideo',['$event']]]]]}}" bindtap="__e">保存视频</button><button data-event-opts="{{[['tap',[['uploadVideo',['$event']]]]]}}" bindtap="__e">保存视频</button></view></view>

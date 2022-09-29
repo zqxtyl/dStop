@@ -11,7 +11,9 @@ import {
 } from '@/api/user.js'
 import store from '@/store/index.js'
 const TimeOut = 3600 // 超时时间
-var token = getStorage('TOKEN') || ''
+var TOKEN = store.state.user.token
+console.log(TOKEN)
+var token = store.state.user.token
 const fly = new Fly()
 fly.config.baseURL = 'http://121.43.156.131'
 //添加请求拦截器
