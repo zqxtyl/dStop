@@ -65,6 +65,7 @@
       }
     }
   ],
+
   "subPackages": [{
     "root": "subpkg",
     "pages": [{
@@ -72,27 +73,18 @@
     }]
   }],
   "tabBar": {
+    "height": "0px",
     "list": [{
-        "text": "首页",
-        "pagePath": "pages/home/home",
-        "iconPath": "static/y-sy.png"
-
+        "pagePath": "pages/home/home"
       },
       {
-        "text": "我的出单",
-        "pagePath": "pages/issue/issue",
-        "iconPath": "static/w-cd.png"
-
+        "pagePath": "pages/issue/issue"
       },
       {
-        "text": "邀请达人",
-        "pagePath": "pages/expert/expert",
-        "iconPath": "static/w-yqdr.png"
+        "pagePath": "pages/expert/expert"
       },
       {
-        "text": "我的",
-        "pagePath": "pages/my/my",
-        "iconPath": "static/w-my.png"
+        "pagePath": "pages/my/my"
       }
 
     ]

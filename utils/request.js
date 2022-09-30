@@ -11,9 +11,7 @@ import {
 } from '@/api/user.js'
 import store from '@/store/index.js'
 const TimeOut = 3600 // 超时时间
-var TOKEN = store.state.user.token
-console.log(TOKEN)
-var token = store.state.user.token
+var token = getStorage('TOKEN')
 const fly = new Fly()
 fly.config.baseURL = 'http://121.43.156.131'
 //添加请求拦截器
@@ -23,7 +21,7 @@ fly.interceptors.request.use((request) => {
   //   if (IsCheckTimeOut()) {
   //     refreshToken()
   //   }
-  request.headers["Authorization"] = `Bearer ${token}`;
+  request.headers["Authorization"] = `Bearer ${getStorage('TOKEN')}`;
   // }
 
   //打印出请求体

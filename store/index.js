@@ -16,6 +16,12 @@ const store = new Vuex.Store({
     user
   },
   // plugins: [createPersistedState()],
+  // plugins: [createPersistedState({
+
+  //   // 方法2：用paths,数组里面填模块名，存储指定模块
+  //   paths: ['user']
+  // })]
+
 })
 
 export default store

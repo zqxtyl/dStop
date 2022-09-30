@@ -42,6 +42,13 @@
           "query": "id=2",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "账号管理",
+          "pathName": "pages/accountNumber/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

@@ -98,7 +98,7 @@ var components
 try {
   components = {
     uLine: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-line/u-line */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-line/u-line")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-line/u-line.vue */ 358))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-line/u-line */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-line/u-line")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-line/u-line.vue */ 363))
     },
     uPopup: function() {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 350))
@@ -161,17 +161,17 @@ var render = function() {
 
   var m16 = __webpack_require__(/*! @/static/chuang.png */ 256)
 
-  var m17 = __webpack_require__(/*! @/static/qt.png */ 218)
+  var m17 = __webpack_require__(/*! @/static/fuzhi.png */ 238)
 
-  var m18 = __webpack_require__(/*! @/static/chuang.png */ 256)
+  var m18 = __webpack_require__(/*! @/static/sp.png */ 237)
 
-  var m19 = __webpack_require__(/*! @/static/qt.png */ 218)
+  var m19 = __webpack_require__(/*! @/static/fuzhi.png */ 238)
 
-  var m20 = __webpack_require__(/*! @/static/chuang.png */ 256)
+  var m20 = __webpack_require__(/*! @/static/sp.png */ 237)
 
-  var m21 = __webpack_require__(/*! @/static/qt.png */ 218)
+  var m21 = __webpack_require__(/*! @/static/fuzhi.png */ 238)
 
-  var m22 = __webpack_require__(/*! @/static/chuang.png */ 256)
+  var m22 = __webpack_require__(/*! @/static/sp.png */ 237)
 
   if (!_vm._isMounted) {
     _vm.e0 = function($event) {
@@ -242,7 +242,120 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 39));
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 40));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -748,9 +861,6 @@ var _home = __webpack_require__(/*! @/api/home.js */ 164);function _interopRequi
 {
   data: function data() {
     return {
-      list3: [
-      'https://cdn.uviewui.com/uview/swiper/swiper3.png'],
-
       attentionShow: false,
       show: false,
       taskStatus: false, //是否领取
@@ -758,19 +868,49 @@ var _home = __webpack_require__(/*! @/api/home.js */ 164);function _interopRequi
       value: false,
       cancelTaskStatus: false,
       uploadVideoStatus: false,
-      copyVideoStatus: false };
+      copyVideoStatus: false,
+      list: {},
+      uname: [],
+      imgs: [],
+      linkUrl: '' };
 
   },
   methods: {
-    getDeatilList: function getDeatilList(id) {return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var data;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+    getDeatilList: function getDeatilList(id) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _yield$getGoodsDetail, data;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+
+
                   (0, _home.getGoodsDetail)({
-                    id: id }));case 2:data = _context.sent;
+                    id: id }));case 2:_yield$getGoodsDetail = _context.sent;data = _yield$getGoodsDetail.data;
 
                 console.log(data);
-                console.log(id);case 5:case "end":return _context.stop();}}}, _callee);}))();
+                _this.list = data;
+                _this.uname = JSON.parse(_this.list.skus);
+                _this.imgs = JSON.parse(_this.list.imgs);
+                _this.linkUrl = data.link;case 9:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    copyLink: function copyLink() {
+      uni.setClipboardData({
+        data: this.linkUrl,
+        success: function success() {
+          uni.showToast({
+            title: '复制成功',
+            duration: 2000,
+            icon: 'none' });
+
+        },
+        fail: function fail(err) {
+          uni.showToast({
+            title: '复制失败',
+            duration: 2000,
+            icon: 'none' });
+
+        } });
+
+    },
+    copyVideoShow: function copyVideoShow() {
+      this.copyVideoStatus = false;
     },
     onLoad: function onLoad(options) {
-      console.log(options.id);
       this.getDeatilList(options.id);
     },
     attentionFn: function attentionFn() {
@@ -807,7 +947,27 @@ var _home = __webpack_require__(/*! @/api/home.js */ 164);function _interopRequi
     pressError: function pressError() {
       this.cancelTaskStatus = false;
     },
-    copyVideo: function copyVideo() {
+    copyVideo: function copyVideo() {var _this2 = this;
+      uni.downloadFile({
+        url: 'https://yishijie1.oss-cn-beijing.aliyuncs.com/mp4/1.mp4',
+        success: function success(res) {
+          var that = _this2;
+          if (res.statusCode === 200) {
+            // 保存视频到手机相册
+            uni.saveVideoToPhotosAlbum({
+              filePath: res.tempFilePath,
+              success: function success() {
+                // 成功提示
+                uni.showToast({
+                  title: '保存成功',
+                  icon: 'success' });
+
+              } });
+
+          }
+
+        } });
+
       this.copyVideoStatus = true;
     },
     noMoreWarn: function noMoreWarn() {

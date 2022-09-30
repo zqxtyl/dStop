@@ -1,5 +1,6 @@
 <template>
   <view class="app">
+
     <view class="swiper">
       <!-- 轮播图区域 -->
       <swiper indicator-color='#CCCCCC' :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000"
@@ -56,7 +57,7 @@
             </view>
           </view>
         </view>
-        <ug-goods :list='products'></ug-goods>
+        <ug-goods v-for="item in products" :key="item.id" :list='item'></ug-goods>
       </view>
       <view class="u-list-item" v-if="current==1">
         视频饮料
@@ -82,7 +83,7 @@
         </view>
       </u-popup>
     </view>
-
+    <tarbar :current="0"></tarbar>
   </view>
 </template>
 
@@ -90,6 +91,10 @@
   import {
     getHome
   } from '@/api/home.js'
+  import {
+    setStorage,
+    getStorage
+  } from '@/utils/location.js'
   import ugGoods from '@/components/ug-goods/ug-goods.vue'
   export default {
     components: {
@@ -206,7 +211,7 @@
       },
     },
     onLoad() {
-      this.getHomeList()
+      uni.hideTabBar()
     },
     onShow() {
       this.getHomeList()

@@ -74,6 +74,26 @@
 </template>
 
 <script>
+  import {
+    getMediaList
+  } from '@/api/media.js'
+  export default {
+    data() {
+      return {
+        list: []
+      }
+    },
+    methods: {
+      async getMediaList() {
+        const
+          data = await getMediaList()
+        console.log(data)
+      }
+    },
+    onLoad() {
+      this.getMediaList()
+    }
+  }
 </script>
 
 <style lang="scss">

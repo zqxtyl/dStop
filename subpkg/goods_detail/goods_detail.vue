@@ -4,10 +4,10 @@
       <!-- 轮播图区域 -->
       <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" :circular="true">
         <!-- 循环渲染轮播图的 item 项 -->
-        <swiper-item v-for="(item, i) in list3" :key="i">
+        <swiper-item v-for="(item, i) in imgs" :key="i">
           <view class="swiper-item">
             <!-- 动态绑定图片的 src 属性 -->
-            <image src="@/static/datail.png"></image>
+            <image :src="item"></image>
           </view>
         </swiper-item>
       </swiper>
@@ -23,15 +23,16 @@
         <view class="title-left">
           <view class="title-left-item">
             <view class="">
-              <p style='color: #E62828; font-size: 38rpx;font-weight: 700;margin-top: 10rpx;'>￥16.9</p>
+              <p style='color: #E62828; font-size: 38rpx;font-weight: 700;margin-top: 10rpx;'>￥{{list.price}}</p>
             </view>
             <view
               style="background-color: #FCE8E9; width: 260rpx; border-radius: 25rpx;height: 55rpx;margin-left: 30rpx; color: #E72E2E;margin-top: 10rpx;">
-              <view style="font-size: 25rpx;font-weight: 700; line-height: 55rpx; ">高佣50% 约￥8.45</view>
+              <view style="font-size: 25rpx;font-weight: 700; line-height: 55rpx; ">高佣{{list.commission_rate}}% 约￥8.45
+              </view>
             </view>
           </view>
           <view style="margin-top: 15rpx;">
-            <p style='font-size: 20rpx;color: #707070;'>公开佣金40%</p>
+            <p style='font-size: 20rpx;color: #707070;'>公开佣金{{list.commission_rate_open}}%</p>
           </view>
         </view>
 
@@ -47,13 +48,13 @@
       <!-- 头部 -->
       <view class="headline box">
         <view>
-          <p style='font-size: 30rpx;font-weight: 700;margin-left: 15rpx;'>产品名称xxxxxx</p>
+          <p style='font-size: 30rpx;font-weight: 700;margin-left: 15rpx;'>{{uname[0]}}</p>
         </view>
       </view>
       <view class="">
         <u-line></u-line>
       </view>
-      <view class="attention box">
+      <view class="attention box" @click="copyLink">
         <view class="attention-item">
           <img style=' width: 36rpx; height: 36rpx;' src="@/static/fuzhil.png" alt="">
           <span style='font-size: 25rpx;color: #8C8C8C;margin-left: 8rpx;'>复制链接</span>
@@ -101,7 +102,7 @@
           </view>
         </view>
         <view class="Live-itme-text">
-          <p>16.9元买一送一</p>
+          <p>{{list.live_bright}}</p>
         </view>
       </view>
 
@@ -116,8 +117,8 @@
           </view>
         </view>
         <view style="margin-left: 8rpx;">
-          <p style='font-size: 25rpx;margin-top: 25rpx;'>1、配聊表都是常见的食物材料或医疗材料：糖，雪梨片粉，薄荷、胖大海、罗汉果、金银花、甘草、高良姜等。</p>
-          <p style='font-size: 25rpx;margin-top: 25rpx;'>2、无防腐剂，无视频添加剂，0脂肪。吃的放心。</p>
+          <p style='font-size: 25rpx;margin-top: 25rpx;'>{{list.sale_bright}}</p>
+
         </view>
       </view>
     </view>
@@ -228,7 +229,7 @@
     </view>
     <!-- 已领取 -->
 
-    <!-- 弹窗 -->
+    <!-- 升级vip -->
     <view>
       <u-popup mode='center' :show="show" @close="close" round="10">
         <view style="width: 600rpx;height: 260rpx;display: flex;align-items: center;justify-content: center;">
@@ -289,7 +290,8 @@
         </view>
       </u-popup>
     </view>
-    <!-- 弹窗 -->
+    <!-- 升级vip -->
+
     <!-- 取消任务 -->
     <view>
       <u-popup mode='center' :show="cancelTaskStatus" @close="TaskClose">
@@ -311,58 +313,96 @@
 
     <view>
       <u-popup safeAreaInsetBottom mode='bottom' :show="cancelTaskStatus" @close="TaskClose">
-        <view style="width: 750rpx; height: 300rpx; padding: 20rpx;">
-          <view style="margin-left: 20rpx;">
-            <p style='color: #333333; font-size: 25rpx;font-weight: 700;'>选择抖音账号</p>
-          </view>
-          <view>
-            <view style="display: flex; margin-left: 20rpx;margin-top: 30rpx;align-content: center;">
-              <view style="width: 94rpx; height: 94rpx;border-radius: 47rpx;background-color: #D8D8D8;">
-              </view>
-              <view style="margin-left: 25rpx;margin-top: 10rpx;">
-                <p style='color: #333333;font-weight: 700;font-size: 25rpx;'>账号名称</p>
-                <view style="display: flex;align-items: center;margin-top: 8rpx;">
-                  <img style='width: 40rpx;height: 36rpx;' src="@/static/qt.png" alt=""><span
-                    style='color: #888888 ;font-size: 25rpx;margin-left: 5rpx;'>青铜等级</span>
-                </view>
-              </view>
-              <view style="margin-left: 380rpx;margin-top: 10rpx;">
-                <u-radio-group v-model="value">
-                  <u-radio shape="circle" activeColor="red" size="40"></u-radio>
-                </u-radio-group>
-              </view>
-            </view>
-          </view>
 
-          <view class="footer-bottom" style="margin-top: 50rpx;">
-            <view style="text-align: center;" class="footer-bottom-left">
-              <img style='width: 40rpx; height: 40rpx;' src="@/static/chuang.png" alt="">
-              <p style='font-size: 23rpx;'>添加橱窗</p>
+        <view style="width: 750rpx; height: 404rpx; padding: 20rpx;">
+          <view style="padding: 8rpx 16rpx; 12rpx 18rpx">
+            <view
+              style="display: flex;justify-content: space-between;font-size: 24rpx;color: #4297EB ;font-weight: 700;">
+              <view>
+                <p>待完成任务</p>
+              </view>
+              <view>
+                <view style="display: flex;align-items: center;margin-right: 44rpx;font-size: 24rpx;color: #676767  ;">
+                  <img style='width: 35rpx;height: 35rpx;margin-right: 18rpx;' src="@/static/fuzhi.png" alt="">
+                  <p>商品链接</p>
+                </view>
+              </view>
             </view>
-            <view class="footer-bottom-right" @click="getTask">
-              <view style="display: flex;">
+
+            <view style="margin-top: 20rpx;font-size: 22rpx;color: #676767 ;">
+              <p>任务要求xxxx</p>
+            </view>
+
+            <view style="margin-top: 22rpx;">
+              <view style="display: flex;align-items: center;">
                 <view>
-                  <p style='margin-right: 15rpx;'>+3补贴</p>
+                  <img style='width: 104rpx;height: 104rpx;' src="@/static/sp.png" alt="">
                 </view>
-                <view>
-                  <p style='margin-left: 15rpx;'>立即领取</p>
+                <view style="margin-left: 26rpx;">
+                  <view style="font-size: 22rpx;font-weight: 700;margin-top: 10rpx;">
+                    <p>任务编号： sp18277192810</p>
+                  </view>
+                  <view style="display: flex;margin-top: 28rpx;">
+                    <view style="display: flex;">
+                      <view
+                        style="width: 96rpx;height: 30rpx;background-color: #EF8325 ;border-radius: 10rpx;font-size: 20rpx;color: #fff;text-align: center;">
+                        <p>待上传</p>
+                      </view>
+                      <view
+                        style="width: 96rpx;height: 30rpx;background-color: #EF8325 ;border-radius: 10rpx;font-size: 20rpx;color: #fff;text-align: center;margin-left: 20rpx;">
+                        <p>￥5.28</p>
+                      </view>
+                    </view>
+
+                    <view style="font-size: 22rpx;color: #676767;margin-left: 116rpx;">
+                      <p>11-01 16:24:26 接单</p>
+                    </view>
+                  </view>
                 </view>
+              </view>
+            </view>
+
+            <view style="display: flex;justify-content: space-between;margin-top: 20rpx;">
+              <view>
+                <button
+                  style="width: 180rpx;height: 56rpx;font-size: 22rpx;color: #676767 ;background-color: #FFFFFF;">复制视频</button>
+              </view>
+              <view>
+                <button
+                  style="width: 180rpx;height: 56rpx;font-size: 22rpx;color: #676767 ;background-color: #FFFFFF;">上传链接</button>
+              </view>
+              <view style="margin-right: 46rpx;">
+                <button
+                  style="width: 180rpx;height: 56rpx;font-size: 22rpx;color: #676767 ;background-color: #FFFFFF;">取消任务</button>
+              </view>
+
+            </view>
+
+            <view style="display: flex;align-items: center;margin-top: 34rpx;">
+              <view style="width: 52rpx;height: 52rpx;background-color: #676767;border-radius: 51rpx;">
+
+              </view>
+              <view style="font-size: 24rpx;font-weight: 700; color: #676767;margin-left: 20rpx;">
+                <p>账号名称</p>
               </view>
             </view>
           </view>
         </view>
+
+
       </u-popup>
     </view>
     <!-- 取消任务 -->
+
     <!-- 上传视频 -->
     <view>
       <u-popup mode='center' :show="uploadVideoStatus" @close="uploadVideoShow" round="10">
-        <view style="width: 440rpx;height: 480rpx;">
+        <view style="width: 650rpx;height: 480rpx;">
           <view style="margin-left: 18rpx;margin-top: 15rpx;margin-bottom: 15rpx;">
             <p style='color: #000000 ;font-weight: 700;font-size: 23rpx;'>复制已发布的抖音视频分享链接</p>
           </view>
           <view style="display: flex;align-items: center;justify-content: center;">
-            <view style="width: 420rpx;height: 280rpx;background-color: #D8D8D8;border: 1px solid #676767;">
+            <view style="width: 550rpx;height: 280rpx;background-color: #D8D8D8;border: 1px solid #676767;">
 
             </view>
           </view>
@@ -381,53 +421,90 @@
 
     <view>
       <u-popup safeAreaInsetBottom mode='bottom' :show="uploadVideoStatus" @close="uploadVideoShow">
-        <view style="width: 750rpx; height: 300rpx; padding: 20rpx;">
-          <view style="margin-left: 20rpx;">
-            <p style='color: #333333; font-size: 25rpx;font-weight: 700;'>选择抖音账号</p>
-          </view>
-          <view>
-            <view style="display: flex; margin-left: 20rpx;margin-top: 30rpx;align-content: center;">
-              <view style="width: 94rpx; height: 94rpx;border-radius: 47rpx;background-color: #D8D8D8;">
-              </view>
-              <view style="margin-left: 25rpx;margin-top: 10rpx;">
-                <p style='color: #333333;font-weight: 700;font-size: 25rpx;'>账号名称</p>
-                <view style="display: flex;align-items: center;margin-top: 8rpx;">
-                  <img style='width: 40rpx;height: 36rpx;' src="@/static/qt.png" alt=""><span
-                    style='color: #888888 ;font-size: 25rpx;margin-left: 5rpx;'>青铜等级</span>
-                </view>
-              </view>
-              <view style="margin-left: 380rpx;margin-top: 10rpx;">
-                <u-radio-group v-model="value">
-                  <u-radio shape="circle" activeColor="red" size="40"></u-radio>
-                </u-radio-group>
-              </view>
-            </view>
-          </view>
 
-          <view class="footer-bottom" style="margin-top: 50rpx;">
-            <view style="text-align: center;" class="footer-bottom-left">
-              <img style='width: 40rpx; height: 40rpx;' src="@/static/chuang.png" alt="">
-              <p style='font-size: 23rpx;'>添加橱窗</p>
+        <view style="width: 750rpx; height: 404rpx; padding: 20rpx;">
+          <view style="padding: 8rpx 16rpx; 12rpx 18rpx">
+            <view
+              style="display: flex;justify-content: space-between;font-size: 24rpx;color: #4297EB ;font-weight: 700;">
+              <view>
+                <p>待完成任务</p>
+              </view>
+              <view>
+                <view style="display: flex;align-items: center;margin-right: 44rpx;font-size: 24rpx;color: #676767  ;">
+                  <img style='width: 35rpx;height: 35rpx;margin-right: 18rpx;' src="@/static/fuzhi.png" alt="">
+                  <p>商品链接</p>
+                </view>
+              </view>
             </view>
-            <view class="footer-bottom-right" @click="getTask">
-              <view style="display: flex;">
+
+            <view style="margin-top: 20rpx;font-size: 22rpx;color: #676767 ;">
+              <p>任务要求xxxx</p>
+            </view>
+
+            <view style="margin-top: 22rpx;">
+              <view style="display: flex;align-items: center;">
                 <view>
-                  <p style='margin-right: 15rpx;'>+3补贴</p>
+                  <img style='width: 104rpx;height: 104rpx;' src="@/static/sp.png" alt="">
                 </view>
-                <view>
-                  <p style='margin-left: 15rpx;'>立即领取</p>
+                <view style="margin-left: 26rpx;">
+                  <view style="font-size: 22rpx;font-weight: 700;margin-top: 10rpx;">
+                    <p>任务编号： sp18277192810</p>
+                  </view>
+                  <view style="display: flex;margin-top: 28rpx;">
+                    <view style="display: flex;">
+                      <view
+                        style="width: 96rpx;height: 30rpx;background-color: #EF8325 ;border-radius: 10rpx;font-size: 20rpx;color: #fff;text-align: center;">
+                        <p>待上传</p>
+                      </view>
+                      <view
+                        style="width: 96rpx;height: 30rpx;background-color: #EF8325 ;border-radius: 10rpx;font-size: 20rpx;color: #fff;text-align: center;margin-left: 20rpx;">
+                        <p>￥5.28</p>
+                      </view>
+                    </view>
+
+                    <view style="font-size: 22rpx;color: #676767;margin-left: 116rpx;">
+                      <p>11-01 16:24:26 接单</p>
+                    </view>
+                  </view>
                 </view>
+              </view>
+            </view>
+
+            <view style="display: flex;justify-content: space-between;margin-top: 20rpx;">
+              <view>
+                <button
+                  style="width: 180rpx;height: 56rpx;font-size: 22rpx;color: #676767 ;background-color: #FFFFFF;">复制视频</button>
+              </view>
+              <view>
+                <button
+                  style="width: 180rpx;height: 56rpx;font-size: 22rpx;color: #676767 ;background-color: #FFFFFF;">上传链接</button>
+              </view>
+              <view style="margin-right: 46rpx;">
+                <button
+                  style="width: 180rpx;height: 56rpx;font-size: 22rpx;color: #676767 ;background-color: #FFFFFF;">取消任务</button>
+              </view>
+
+            </view>
+
+            <view style="display: flex;align-items: center;margin-top: 34rpx;">
+              <view style="width: 52rpx;height: 52rpx;background-color: #676767;border-radius: 51rpx;">
+
+              </view>
+              <view style="font-size: 24rpx;font-weight: 700; color: #676767;margin-left: 20rpx;">
+                <p>账号名称</p>
               </view>
             </view>
           </view>
         </view>
+
+
       </u-popup>
     </view>
-
     <!-- 上传视频 -->
+
     <!-- 复制视频 -->
     <view>
-      <u-popup mode='center' :show="copyVideoStatus" @close="uploadVideoShow" round="10">
+      <u-popup mode='center' :show="copyVideoStatus" @close="copyVideoShow" round="10">
         <view style="width: 640rpx;height: 480rpx;">
           <view style="display: flex;align-items: center;justify-content: center;">
             <view
@@ -451,46 +528,82 @@
 
     <view>
       <u-popup safeAreaInsetBottom mode='bottom' :show="copyVideoStatus" @close="uploadVideoShow">
-        <view style="width: 750rpx; height: 300rpx; padding: 20rpx;">
-          <view style="margin-left: 20rpx;">
-            <p style='color: #333333; font-size: 25rpx;font-weight: 700;'>选择抖音账号</p>
-          </view>
-          <view>
-            <view style="display: flex; margin-left: 20rpx;margin-top: 30rpx;align-content: center;">
-              <view style="width: 94rpx; height: 94rpx;border-radius: 47rpx;background-color: #D8D8D8;">
+        <view style="width: 750rpx; height: 404rpx; padding: 20rpx;">
+          <view style="padding: 8rpx 16rpx; 12rpx 18rpx">
+            <view
+              style="display: flex;justify-content: space-between;font-size: 24rpx;color: #4297EB ;font-weight: 700;">
+              <view>
+                <p>待完成任务</p>
               </view>
-              <view style="margin-left: 25rpx;margin-top: 10rpx;">
-                <p style='color: #333333;font-weight: 700;font-size: 25rpx;'>账号名称</p>
-                <view style="display: flex;align-items: center;margin-top: 8rpx;">
-                  <img style='width: 40rpx;height: 36rpx;' src="@/static/qt.png" alt=""><span
-                    style='color: #888888 ;font-size: 25rpx;margin-left: 5rpx;'>青铜等级</span>
+              <view>
+                <view style="display: flex;align-items: center;margin-right: 44rpx;font-size: 24rpx;color: #676767  ;">
+                  <img style='width: 35rpx;height: 35rpx;margin-right: 18rpx;' src="@/static/fuzhi.png" alt="">
+                  <p>商品链接</p>
                 </view>
               </view>
-              <view style="margin-left: 380rpx;margin-top: 10rpx;">
-                <u-radio-group v-model="value">
-                  <u-radio shape="circle" activeColor="red" size="40"></u-radio>
-                </u-radio-group>
-              </view>
             </view>
-          </view>
 
-          <view class="footer-bottom" style="margin-top: 50rpx;">
-            <view style="text-align: center;" class="footer-bottom-left">
-              <img style='width: 40rpx; height: 40rpx;' src="@/static/chuang.png" alt="">
-              <p style='font-size: 23rpx;'>添加橱窗</p>
+            <view style="margin-top: 20rpx;font-size: 22rpx;color: #676767 ;">
+              <p>任务要求xxxx</p>
             </view>
-            <view class="footer-bottom-right" @click="getTask">
-              <view style="display: flex;">
+
+            <view style="margin-top: 22rpx;">
+              <view style="display: flex;align-items: center;">
                 <view>
-                  <p style='margin-right: 15rpx;'>+3补贴</p>
+                  <img style='width: 104rpx;height: 104rpx;' src="@/static/sp.png" alt="">
                 </view>
-                <view>
-                  <p style='margin-left: 15rpx;'>立即领取</p>
+                <view style="margin-left: 26rpx;">
+                  <view style="font-size: 22rpx;font-weight: 700;margin-top: 10rpx;">
+                    <p>任务编号： sp18277192810</p>
+                  </view>
+                  <view style="display: flex;margin-top: 28rpx;">
+                    <view style="display: flex;">
+                      <view
+                        style="width: 96rpx;height: 30rpx;background-color: #EF8325 ;border-radius: 10rpx;font-size: 20rpx;color: #fff;text-align: center;">
+                        <p>待上传</p>
+                      </view>
+                      <view
+                        style="width: 96rpx;height: 30rpx;background-color: #EF8325 ;border-radius: 10rpx;font-size: 20rpx;color: #fff;text-align: center;margin-left: 20rpx;">
+                        <p>￥5.28</p>
+                      </view>
+                    </view>
+
+                    <view style="font-size: 22rpx;color: #676767;margin-left: 116rpx;">
+                      <p>11-01 16:24:26 接单</p>
+                    </view>
+                  </view>
                 </view>
+              </view>
+            </view>
+
+            <view style="display: flex;justify-content: space-between;margin-top: 20rpx;">
+              <view>
+                <button
+                  style="width: 180rpx;height: 56rpx;font-size: 22rpx;color: #676767 ;background-color: #FFFFFF;">复制视频</button>
+              </view>
+              <view>
+                <button
+                  style="width: 180rpx;height: 56rpx;font-size: 22rpx;color: #676767 ;background-color: #FFFFFF;">上传链接</button>
+              </view>
+              <view style="margin-right: 46rpx;">
+                <button
+                  style="width: 180rpx;height: 56rpx;font-size: 22rpx;color: #676767 ;background-color: #FFFFFF;">取消任务</button>
+              </view>
+
+            </view>
+
+            <view style="display: flex;align-items: center;margin-top: 34rpx;">
+              <view style="width: 52rpx;height: 52rpx;background-color: #676767;border-radius: 51rpx;">
+
+              </view>
+              <view style="font-size: 24rpx;font-weight: 700; color: #676767;margin-left: 20rpx;">
+                <p>账号名称</p>
               </view>
             </view>
           </view>
         </view>
+
+
       </u-popup>
     </view>
     <!-- 复制视频 -->
@@ -504,9 +617,6 @@
   export default {
     data() {
       return {
-        list3: [
-          'https://cdn.uviewui.com/uview/swiper/swiper3.png'
-        ],
         attentionShow: false,
         show: false,
         taskStatus: false, //是否领取
@@ -514,19 +624,49 @@
         value: false,
         cancelTaskStatus: false,
         uploadVideoStatus: false,
-        copyVideoStatus: false
+        copyVideoStatus: false,
+        list: {},
+        uname: [],
+        imgs: [],
+        linkUrl: ''
       }
     },
     methods: {
       async getDeatilList(id) {
-        const data = await getGoodsDetail({
+        const {
+          data
+        } = await getGoodsDetail({
           id: id
         })
         console.log(data)
-        console.log(id)
+        this.list = data
+        this.uname = JSON.parse(this.list.skus)
+        this.imgs = JSON.parse(this.list.imgs)
+        this.linkUrl = data.link
+      },
+      copyLink() {
+        uni.setClipboardData({
+          data: this.linkUrl,
+          success: function() {
+            uni.showToast({
+              title: '复制成功',
+              duration: 2000,
+              icon: 'none'
+            });
+          },
+          fail: function(err) {
+            uni.showToast({
+              title: '复制失败',
+              duration: 2000,
+              icon: 'none'
+            });
+          }
+        });
+      },
+      copyVideoShow() {
+        this.copyVideoStatus = false
       },
       onLoad(options) {
-        console.log(options.id)
         this.getDeatilList(options.id)
       },
       attentionFn() {
@@ -564,6 +704,26 @@
         this.cancelTaskStatus = false
       },
       copyVideo() {
+        uni.downloadFile({
+          url: 'https://yishijie1.oss-cn-beijing.aliyuncs.com/mp4/1.mp4',
+          success: (res) => {
+            const that = this
+            if (res.statusCode === 200) {
+              // 保存视频到手机相册
+              uni.saveVideoToPhotosAlbum({
+                filePath: res.tempFilePath,
+                success: function() {
+                  // 成功提示
+                  uni.showToast({
+                    title: '保存成功',
+                    icon: 'success'
+                  })
+                }
+              })
+            }
+
+          }
+        })
         this.copyVideoStatus = true
       },
       noMoreWarn() {

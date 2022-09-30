@@ -118,16 +118,29 @@
         <img style='width: 76rpx;height: 68rpx;' src="@/static/lljl.png" alt="">
         <p style='font-size: 25rpx;margin-top: 10rpx;'>浏览记录</p>
       </view>
-      <view class="footer-item">
+      <view class="footer-item" @click="getOfficialService">
         <img style='width: 70rpx;height: 68rpx;' src="@/static/gfkf.png" alt="">
         <p style='font-size: 25rpx;margin-top: 10rpx;'>官方客服</p>
       </view>
     </view>
 
+    <!-- 弹出层 -->
+    <view>
+      <u-popup :show="show" mode="center" @close="close" @open="open">
+        <view>
+          <text>人生若只如初见，何事秋风悲画扇</text>
+        </view>
+      </u-popup>
+    </view>
+    <!-- 弹出层 -->
+    <tarbar :current="3"></tarbar>
   </view>
 </template>
 
 <script>
+  import {
+    officialService
+  } from '@/api/my.js'
   export default {
     data() {
       return {
@@ -149,7 +162,8 @@
           }
 
 
-        ]
+        ],
+        show: true
       };
     },
     methods: {
@@ -163,6 +177,11 @@
           url: '/pages/accountDetail/index'
         })
       },
+      async getOfficialService() {
+        this.show = true
+        const data = await officialService()
+        console.log(data)
+      },
       goVideoTask() {
         uni.navigateTo({
           url: '/pages/videoTask/index'
@@ -172,7 +191,17 @@
         uni.navigateTo({
           url: `/pages/videoTask/index?id=${id}`
         })
+      },
+      open() {
+        // console.log('open');
+      },
+      close() {
+        this.show = false
+        // console.log('close');
       }
+    },
+    onLoad() {
+      uni.hideTabBar()
     }
   }
 </script>

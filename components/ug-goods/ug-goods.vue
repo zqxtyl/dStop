@@ -2,20 +2,21 @@
   <view>
     <view class="goods">
       <view class="images">
-        <img @click='getGoodsDetail(list[0].id)' style='width: 350rpx;height: 350rpx;' :src="list[0].imgs[0]" alt="">
+        <img @click='getGoodsDetail(list.id)' style='width: 350rpx;height: 350rpx;border-radius: 25rpx;'
+          :src="JSON.parse(list.imgs)" alt="">
       </view>
       <view class="text">
         <view>
-          <p style='font-size: 25rpx; font-weight: 700;'>{{list[0].title||"商品名称"}}</p>
+          <p style='font-size: 25rpx; font-weight: 700;'>{{list.title||"商品名称"}}</p>
         </view>
         <view class="text2">
           <view class="text3">
             <view class="box">
-              <p style='font-size: 20rpx; color: #fff;'>￥{{list[0].price||8}}</p>
+              <p style='font-size: 20rpx; color: #fff;'>￥{{list.price||8}}</p>
               <p style='font-size: 20rpx; color: #fff;'>平台补贴</p>
             </view>
             <view class="box2">
-              <p style='font-size: 20rpx; color: #fff;'>{{list[0].commission_rate||20}}%</p>
+              <p style='font-size: 20rpx; color: #fff;'>{{list.commission_rate||20}}%</p>
               <p style='font-size: 20rpx; color: #fff;'>佣金</p>
             </view>
           </view>
@@ -23,10 +24,10 @@
           </view>
           <view>
             <view class="rightBox">
-              <p style='color: blue; font-size: 20rpx; font-weight: 700;'>剩余：{{list[0].leftTasks||300}}</p>
+              <p style='color: blue; font-size: 20rpx; font-weight: 700;'>剩余：{{list.leftTasks||300}}</p>
             </view>
             <view class="rightBox2">
-              <p style='color: #717171; font-size: 20rpx;'>到手价：{{list[0].price||3}}</p>
+              <p style='color: #717171; font-size: 20rpx;'>到手价：{{list.price||3}}</p>
             </view>
           </view>
         </view>
@@ -40,8 +41,8 @@
     name: 'ug-goods',
     props: {
       list: {
-        type: Array,
-        default: []
+        type: Object,
+        default: {}
       }
     },
     data() {
@@ -55,6 +56,9 @@
           url: `/subpkg/goods_detail/goods_detail?id=${id}`
         })
       }
+    },
+    onLoad() {
+      console.log(list)
     }
   }
 </script>
@@ -63,13 +67,14 @@
   .goods {
     .images {
       width: 350rpx;
-      border: 1px solid #ccc;
+      border-radius: 25rpx;
     }
 
     .text {
       width: 350rpx;
-      border: 1px solid #ccc;
       height: 110rpx;
+      border-radius: 25rpx;
+      background-color: #fff;
 
       .text2 {
         display: flex;

@@ -273,8 +273,9 @@
       this.$refs.uForm.setRules(this.rules);
     },
     onLoad() {
-
+      uni.removeStorageSync('TOKEN')
     },
+
     watch: {
       form: {
         handler(newValue, oldValue) {

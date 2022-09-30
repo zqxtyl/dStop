@@ -26,12 +26,13 @@
 /* 文章场景相关 */
 .goods .images {
   width: 350rpx;
-  border: 1px solid #ccc;
+  border-radius: 25rpx;
 }
 .goods .text {
   width: 350rpx;
-  border: 1px solid #ccc;
   height: 110rpx;
+  border-radius: 25rpx;
+  background-color: #fff;
 }
 .goods .text .text2 {
   display: flex;

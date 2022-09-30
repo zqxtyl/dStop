@@ -1,15 +1,20 @@
+import {
+  setStorage,
+  getStorage
+} from '@/utils/location.js'
+
 export default {
   namespaced: true,
   state: {
     userInfo: {},
-    token: ''
+    token: getStorage('TOKEN') || ''
   },
   mutations: {
     getUsrInfo(state, payload) {
       state.userInfo = payload
     },
     getToken(state, payload) {
-      state.token = payload
+      setStorage('TOKEN', payload)
     }
   },
   actions: {},

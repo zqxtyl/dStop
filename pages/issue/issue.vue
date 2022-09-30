@@ -2,21 +2,19 @@
   <view>
     <view class="">
       <view class="">
-        {{this.$store.state.user.token}}
       </view>
       <video src="https://yishijie1.oss-cn-beijing.aliyuncs.com/mp4/1.mp4"></video>
       <button @click="saveVideo">保存视频</button>
       <button @click="uploadVideo">保存视频</button>
     </view>
+    <tarbar :current="1"></tarbar>
   </view>
 </template>
 
 <script>
   export default {
     data() {
-      return {
-
-      };
+      return {};
     },
     methods: {
       saveVideo() {
@@ -81,10 +79,9 @@
           }
         })
       },
-
-
-
-
+    },
+    onLoad() {
+      uni.hideTabBar()
     }
   }
 </script>

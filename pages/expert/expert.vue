@@ -120,7 +120,7 @@ border-radius: 24rpx 24rpx 0rpx 0rpx;">
       </u-popup>
     </view>
     <!-- 弹层 -->
-
+    <tarbar :current="2"></tarbar>
   </view>
 </template>
 
@@ -142,6 +142,9 @@ border-radius: 24rpx 24rpx 0rpx 0rpx;">
         this.show = false
         // console.log('close');
       }
+    },
+    onLoad() {
+      uni.hideTabBar()
     }
   }
 </script>
