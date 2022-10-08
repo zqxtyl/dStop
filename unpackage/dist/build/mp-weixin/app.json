@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/home/home",
+    "pages/issue/issue",
+    "pages/expert/expert",
+    "pages/my/my",
+    "pages/login/enter-password",
+    "pages/upgrade/upgrade",
+    "pages/accountNumber/index",
+    "pages/accountDetail/index",
+    "pages/videoTask/index"
+  ],
+  "subPackages": [
+    {
+      "root": "subpkg",
+      "pages": [
+        "goods_detail/goods_detail"
+      ]
+    }
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "DEMO",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "height": "0px",
+    "list": [
+      {
+        "pagePath": "pages/home/home"
+      },
+      {
+        "pagePath": "pages/issue/issue"
+      },
+      {
+        "pagePath": "pages/expert/expert"
+      },
+      {
+        "pagePath": "pages/my/my"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

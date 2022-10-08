@@ -1,3 +1,4 @@
+<!-- 自定义底部栏 -->
 <template>
   <view>
     <u-tabbar :value="current?current:0" @change="tabbarChange" :fixed="true" :placeholder="true"

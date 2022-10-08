@@ -1,3 +1,4 @@
+<!-- 首页商品项 -->
 <template>
   <view class="tarbar">
     <view class=".tarbar-list" :style="{

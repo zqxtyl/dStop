@@ -1,3 +1,4 @@
+<!-- 账号详情 -->
 <template>
   <view class="account-detail">
     <view class="navbar">

@@ -1,3 +1,4 @@
+<!-- 邀请达人 -->
 <template>
   <view class="expert">
     <view class="title">
@@ -128,7 +129,7 @@ border-radius: 24rpx 24rpx 0rpx 0rpx;">
   export default {
     data() {
       return {
-        show: false
+        show: false, //分享海报
       };
     },
     methods: {

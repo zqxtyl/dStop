@@ -3,9 +3,10 @@
     <view class="">
       <view class="">
       </view>
-      <video src="https://yishijie1.oss-cn-beijing.aliyuncs.com/mp4/1.mp4"></video>
+      <!--      <video src="https://yishijie1.oss-cn-beijing.aliyuncs.com/mp4/1.mp4"></video>
       <button @click="saveVideo">保存视频</button>
-      <button @click="uploadVideo">保存视频</button>
+      <button @click="uploadVideo">保存视频</button> -->
+      我的出单
     </view>
     <tarbar :current="1"></tarbar>
   </view>

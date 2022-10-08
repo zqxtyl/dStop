@@ -1,3 +1,4 @@
+<!-- 个人中心 -->
 <template>
   <view class="app">
     <view class="title">
@@ -104,7 +105,7 @@
         <u-line></u-line>
       </view>
     </view>
-
+    <!-- 底部 -->
     <view class="footer">
       <view class="footer-item" @click="numberManage">
         <img style='width: 60rpx;height: 60rpx;' src="@/static/zhgl.png" alt="">
@@ -128,7 +129,7 @@
     <view>
       <u-popup :show="show" mode="center" @close="close" @open="open">
         <view>
-          <text>人生若只如初见，何事秋风悲画扇</text>
+          <img :src="List.qrCodeImg" alt="">
         </view>
       </u-popup>
     </view>
@@ -163,31 +164,35 @@
 
 
         ],
-        show: true
+        show: false, //客服
+        List: []
       };
     },
     methods: {
-      numberManage() {
+      numberManage() { //账号管理
         uni.navigateTo({
           url: '/pages/accountNumber/index'
         })
       },
-      accountDetail() {
+      accountDetail() { //账户明细
         uni.navigateTo({
           url: '/pages/accountDetail/index'
         })
       },
       async getOfficialService() {
-        this.show = true
-        const data = await officialService()
+        const {
+          data
+        } = await officialService()
         console.log(data)
+        this.List = data
+        this.show = true
       },
-      goVideoTask() {
+      goVideoTask() { //视频任务
         uni.navigateTo({
           url: '/pages/videoTask/index'
         })
       },
-      goVideoTaskStatus(id) {
+      goVideoTaskStatus(id) { //跳转当前视频任务
         uni.navigateTo({
           url: `/pages/videoTask/index?id=${id}`
         })

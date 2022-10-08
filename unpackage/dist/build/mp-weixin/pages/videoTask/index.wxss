@@ -1,0 +1,1 @@
+.videoTask{background-color:#f5f5f5}.videoTask .main{margin:20rpx;width:710rpx;height:316rpx;background-color:#fff;border-radius:10rpx}.videoTask .main .main-item{padding:34rpx 22rpx 30rpx 36rpx}.videoTask .buttons{display:flex;justify-content:space-between;margin-top:15rpx}.videoTask .buttons .buttons-item{width:170rpx;height:52rpx}

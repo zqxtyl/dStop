@@ -1,3 +1,4 @@
+<!-- 视频任务 -->
 <template>
   <view class="videoTask">
     <view class="navbar">
@@ -249,8 +250,8 @@
             name: '已失效'
           }
         ],
-        current: 0,
-        status: false
+        current: 0, //当前索引
+        status: false, //重新上传
       }
     },
     methods: {

@@ -49,6 +49,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "等级特权",
+          "pathName": "pages/upgrade/upgrade",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

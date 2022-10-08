@@ -98,13 +98,13 @@ var components
 try {
   components = {
     uLine: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-line/u-line */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-line/u-line")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-line/u-line.vue */ 363))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-line/u-line */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-line/u-line")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-line/u-line.vue */ 366))
     },
     uPopup: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 350))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 353))
     },
     tarbar: function() {
-      return __webpack_require__.e(/*! import() | components/tarbar/tarbar */ "components/tarbar/tarbar").then(__webpack_require__.bind(null, /*! @/components/tarbar/tarbar.vue */ 358))
+      return __webpack_require__.e(/*! import() | components/tarbar/tarbar */ "components/tarbar/tarbar").then(__webpack_require__.bind(null, /*! @/components/tarbar/tarbar.vue */ 361))
     }
   }
 } catch (e) {
@@ -300,12 +300,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
     return {
-      show: false };
-
+      show: false //分享海报
+    };
   },
   methods: {
     expertFn: function expertFn() {

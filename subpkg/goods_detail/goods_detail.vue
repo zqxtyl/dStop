@@ -617,18 +617,18 @@
   export default {
     data() {
       return {
-        attentionShow: false,
-        show: false,
+        attentionShow: false, //是否关注
+        show: false, //升级vip弹层
         taskStatus: false, //是否领取
-        grade: true, //等级
-        value: false,
-        cancelTaskStatus: false,
-        uploadVideoStatus: false,
-        copyVideoStatus: false,
+        grade: false, //等级
+        value: false, //单选状态
+        cancelTaskStatus: false, //取消任务弹层
+        uploadVideoStatus: false, //上传
+        copyVideoStatus: false, //复制
         list: {},
         uname: [],
         imgs: [],
-        linkUrl: ''
+        linkUrl: '', //复制链接
       }
     },
     methods: {
@@ -667,6 +667,7 @@
         this.copyVideoStatus = false
       },
       onLoad(options) {
+        //当前id
         this.getDeatilList(options.id)
       },
       attentionFn() {

@@ -1,18 +1,20 @@
+<!-- 特权达人 -->
 <template>
   <view class="app">
     <!-- 普通用户 -->
     <view v-if="!vipStatus">
       <view class="box">
+        <img :src="List.img_advance" alt="">
       </view>
       <view class="footer">
         <view class="footer-button">
           <view>
             <view style="display: flex;align-items: center;">
               <view style="margin-top: 13rpx;margin-left: 120rpx;">
-                <p style='text-decoration: line-through;font-size: 23rpx;color: #FFFFFF;'>原价￥2000</p>
+                <p style='text-decoration: line-through;font-size: 23rpx;color: #FFFFFF;'>原价￥{{List.origin_price}}</p>
               </view>
               <view style="font-size: 28rpx;color: #FFFFFF;margin-left: 50rpx;margin-top: 13rpx;">
-                <p>活动价￥1089</p>
+                <p>活动价￥{{List.now_price}}</p>
               </view>
             </view>
             <view style="display: flex;align-items: center;justify-content: center;margin-top: 8rpx;">
@@ -42,11 +44,34 @@
 </template>
 
 <script>
+  import {
+    getMember,
+    dyPic
+  } from '@/api/member.js'
   export default {
     data() {
       return {
-        vipStatus: false
+        vipStatus: false, //会员状态
+        List: {}
       }
+    },
+    methods: {
+      async getMember() {
+        const {
+          data
+        } = await getMember()
+        this.List = data
+      },
+      async getDyPic() {
+        const {
+          data
+        } = await dyPic()
+        console.log(data)
+      }
+    },
+    onLoad() {
+      this.getMember()
+      this.getDyPic()
     }
   }
 </script>
