@@ -48,12 +48,33 @@
   position: absolute;
   top: 15rpx;
 }
+.app .title .titie-item .title-bottom .title-box {
+  display: flex;
+  justify-content: space-between;
+}
+.app .title .titie-item .title-bottom .title-box .title-box-text {
+  font-weight: 700;
+  font-size: 32rpx;
+  margin-left: 15rpx;
+}
+.app .title .titie-item .title-bottom .title-box .title-box-right {
+  display: flex;
+  align-items: center;
+  margin-right: 50rpx;
+  color: #676767;
+  font-size: 25rpx;
+}
 .app .title .titie-item .title-bottom .title-bottom-item {
   margin-top: 46rpx;
   display: flex;
   justify-content: space-around;
   text-align: center;
   margin-right: 30rpx;
+  font-size: 25rpx;
+}
+.app .title .titie-item .title-bottom .title-bottom-item image {
+  width: 52rpx;
+  height: 52rpx;
 }
 .app .main {
   background-color: #fff;
@@ -64,13 +85,25 @@
   display: flex;
   justify-content: space-between;
 }
-.app .main .main-bottom {
+.app .main .main-top .main-top-title {
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  font-weight: 700;
+  font-size: 30rpx;
+}
+.app .main .main-top .main-top-right {
+  display: flex;
+  align-items: center;
+  color: #676767;
+  margin-right: 15rpx;
+}
+.app .main .main-top .main-bottom {
   display: flex;
   justify-content: space-between;
   margin-top: 44rpx;
   align-items: center;
 }
-.app .main .main-bottom .main-bottom-item {
+.app .main .main-top .main-bottom .main-bottom-item {
   width: 150rpx;
   height: 64rpx;
   background-color: #E62828;

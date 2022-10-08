@@ -4,13 +4,14 @@
     <view class="title">
       <view class="titie-item">
         <view class="title-bottom">
-          <view style="display: flex;justify-content: space-between;">
+          <view class="title-box">
             <view @click="goVideoTask">
-              <p style='font-weight: 700;font-size: 32rpx;margin-left: 15rpx;'>视频任务</p>
+              <view class="title-box-text">视频任务</view>
             </view>
-            <view style="display: flex;align-items: center;margin-right: 50rpx;color: #676767 ;font-size: 25rpx;">
+            <view class="title-box-right">
               <view @click="goVideoTask">
-                <p>全部订单</p>
+
+                <view>全部订单</view>
               </view>
               <view class="iconfont icon-jiantouyou" style="font-size: 20rpx;margin-left: 8rpx;">
               </view>
@@ -18,45 +19,32 @@
           </view>
           <view class="title-bottom-item">
             <view @click="goVideoTaskStatus(i)" v-for="(item,i) in videoList" :key="i">
-              <img style='width: 52rpx;height: 52rpx;' :src="`/static/${item.img}.png`" alt="">
-              <p style='font-size: 25rpx;'>{{item.name}}</p>
+              <image :src="`/static/${item.img}.png`" alt="">
+                <view>{{item.name}}</view>
             </view>
-            <!--            <view>
-              <img style='width: 52rpx;height: 52rpx;' src="@/static/dsh.png" alt="">
-              <p style='font-size: 25rpx;'>待审核</p>
-            </view>
-            <view>
-              <img style='width: 52rpx;height: 52rpx;' src="@/static/wtg.png" alt="">
-              <p style='font-size: 25rpx;'>未通过</p>
-            </view>
-            <view>
-              <img style='width: 52rpx;height: 52rpx;' src="@/static/ywc.png" alt="">
-              <p style='font-size: 25rpx;'>已完成</p>
-            </view> -->
           </view>
         </view>
       </view>
     </view>
-
     <view class="main">
       <view class="main-top">
-        <view style="margin-top: 20rpx;margin-left: 20rpx;">
-          <p style='font-weight: 700;font-size: 30rpx;'>可提现</p>
+        <view class="main-top-title">
+          <view>可提现</view>
         </view>
 
-        <view style="display: flex;align-items: center;color: #676767 ;margin-right: 15rpx;" @click="accountDetail">
-          <p style='font-size: 25rpx;'>明细</p>
+        <view class="main-top-right" @click="accountDetail">
+          <text>明细</text>
           <view class="iconfont icon-jiantouyou" style="font-size: 20rpx;margin-left: 8rpx;">
           </view>
         </view>
       </view>
       <view class="main-bottom">
         <view style="margin-left: 20rpx;font-size: 70rpx;">
-          <p>5,000.00</p>
+          <view>5,000.00</view>
         </view>
         <view class="main-bottom-item">
           <view style="display: flex;justify-content: center;align-items: center;">
-            <p style='font-size: 28rpx;color: #fff;margin-top: 10rpx;'>转出</p>
+            <view style='font-size: 28rpx;color: #fff;margin-top: 10rpx;'>转出</view>
           </view>
         </view>
       </view>
@@ -236,12 +224,37 @@
           position: absolute;
           top: 15rpx;
 
+          .title-box {
+            display: flex;
+            justify-content: space-between;
+
+            .title-box-text {
+              font-weight: 700;
+              font-size: 32rpx;
+              margin-left: 15rpx;
+            }
+
+            .title-box-right {
+              display: flex;
+              align-items: center;
+              margin-right: 50rpx;
+              color: #676767;
+              font-size: 25rpx;
+            }
+          }
+
           .title-bottom-item {
             margin-top: 46rpx;
             display: flex;
             justify-content: space-around;
             text-align: center;
             margin-right: 30rpx;
+            font-size: 25rpx;
+
+            image {
+              width: 52rpx;
+              height: 52rpx;
+            }
           }
         }
       }
@@ -255,20 +268,36 @@
       .main-top {
         display: flex;
         justify-content: space-between;
-      }
 
-      .main-bottom {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 44rpx;
-        align-items: center;
+        .main-top-title {
+          margin-top: 20rpx;
+          margin-left: 20rpx;
+          font-weight: 700;
+          font-size: 30rpx;
+        }
 
-        .main-bottom-item {
-          width: 150rpx;
-          height: 64rpx;
-          background-color: #E62828;
-          border-radius: 8rpx;
-          margin-right: 10rpx;
+        .main-top-right {
+          display: flex;
+          align-items: center;
+          color: #676767;
+          margin-right: 15rpx;
+
+          text {}
+        }
+
+        .main-bottom {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 44rpx;
+          align-items: center;
+
+          .main-bottom-item {
+            width: 150rpx;
+            height: 64rpx;
+            background-color: #E62828;
+            border-radius: 8rpx;
+            margin-right: 10rpx;
+          }
         }
       }
     }

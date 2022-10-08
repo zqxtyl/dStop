@@ -20,52 +20,52 @@
     <view class="main">
       <view class="main-item">
         <view>
-          <view>
-            <p style='font-size: 28rpx;font-weight: 700;'>下级订单奖励</p>
+          <view class="main-item-title">
+            <text>下级订单奖励</text>
           </view>
-          <view style="font-size: 22rpx;margin-top: 20rpx;color: #B9B9B9;">
-            <p>2022-11-01 16:24:26</p>
-          </view>
-        </view>
-        <view style="margin-right: 90rpx;color: #2BC155;text-align: center;">
-          <p>+0.2</p>
-        </view>
-      </view>
-
-      <view class="main-item">
-        <view>
-          <view>
-            <p style='font-size: 28rpx;font-weight: 700;'>微信提现</p>
-          </view>
-          <view style="font-size: 22rpx;margin-top: 20rpx;color: #B9B9B9;">
-            <p>2022-11-01 16:24:26</p>
+          <view class="item-main">
+            <text>2022-11-01 16:24:26</text>
           </view>
         </view>
-        <view style="margin-right: 90rpx;color: #D33D34 ;text-align: center;">
-          <view>
-            <p>-20</p>
-          </view>
-          <view>
-            <p style='font-size: 22rpx;color: #B9B9B9;margin-top: 18rpx;'>待通过</p>
-          </view>
+        <view class="item-title-left" style="color: #2BC155;">
+          <text>+0.2</text>
         </view>
       </view>
 
       <view class="main-item">
         <view>
-          <view>
-            <p style='font-size: 28rpx;font-weight: 700;'>微信提现</p>
+          <view class="main-item-title">
+            <text>微信提现</text>
           </view>
-          <view style="font-size: 22rpx;margin-top: 20rpx;color: #B9B9B9;">
-            <p>2022-11-01 16:24:26</p>
+          <view class="item-main">
+            <text>2022-11-01 16:24:26</text>
           </view>
         </view>
-        <view style="margin-right: 90rpx;color: #D33D34 ;text-align: center;">
+        <view class="item-title-left" style="color: #D33D34 ;">
           <view>
-            <p>-20</p>
+            <text>-20</text>
           </view>
+          <view class="title-item-text">
+            <text>待通过</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="main-item">
+        <view>
+          <view class="main-item-title">
+            <text>微信提现</text>
+          </view>
+          <view class="item-main">
+            <text>2022-11-01 16:24:26</text>
+          </view>
+        </view>
+        <view class="item-title-left" style="color: #D33D34 ;">
           <view>
-            <p style='font-size: 22rpx;color: #B9B9B9;margin-top: 18rpx;'>通过</p>
+            <text>-20</text>
+          </view>
+          <view class="title-item-text">
+            <text>通过</text>
           </view>
         </view>
       </view>
@@ -114,6 +114,32 @@
         padding: 34rpx 44rpx;
         display: flex;
         justify-content: space-between;
+
+        .main-item-title {
+          text {
+            font-size: 28rpx;
+            font-weight: 700;
+          }
+        }
+
+        .item-title-left {
+          margin-right: 90rpx;
+          text-align: center;
+
+          .title-item-text {
+            font-size: 22rpx;
+            color: #B9B9B9;
+            margin-top: 18rpx;
+          }
+        }
+
+        .item-main {
+          text {
+            font-size: 22rpx;
+            margin-top: 20rpx;
+            color: #B9B9B9;
+          }
+        }
       }
     }
   }

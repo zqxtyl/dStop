@@ -4,23 +4,23 @@
     <u-tabbar :value="current?current:0" @change="tabbarChange" :fixed="true" :placeholder="true"
       :safeAreaInsetBottom="true" activeColor="#333333">
       <u-tabbar-item text="首页">
-        <image style="width: 42rpx;height: 42rpx;" slot="active-icon" src="@/static/y-sy.png"></image>
-        <image style="width: 42rpx;height: 42rpx;" slot="inactive-icon" src="@/static/w-sy.png">
+        <image class="images" slot="active-icon" src="@/static/y-sy.png"></image>
+        <image class="images" slot="inactive-icon" src="@/static/w-sy.png">
         </image>
       </u-tabbar-item>
       <u-tabbar-item text="我的出单">
-        <image style="width: 42rpx;height: 42rpx;" slot="active-icon" src="@/static/y-cd.png"></image>
-        <image style="width: 42rpx;height: 42rpx;" slot="inactive-icon" src="@/static/w-cd.png">
+        <image class="images" slot="active-icon" src="@/static/y-cd.png"></image>
+        <image class="images" slot="inactive-icon" src="@/static/w-cd.png">
         </image>
       </u-tabbar-item>
       <u-tabbar-item text="邀请达人">
-        <image style="width: 42rpx;height: 42rpx;" slot="active-icon" src="@/static/y-dr.png"></image>
-        <image style="width: 42rpx;height: 42rpx;" slot="inactive-icon" src="@/static/w-dr.png">
+        <image class="images" slot="active-icon" src="@/static/y-dr.png"></image>
+        <image class="images" slot="inactive-icon" src="@/static/w-dr.png">
         </image>
       </u-tabbar-item>
       <u-tabbar-item text="我的">
-        <image style="width: 42rpx;height: 42rpx;" slot="active-icon" src="@/static/y-my.png"></image>
-        <image style="width: 42rpx;height: 42rpx;" slot="inactive-icon" src="@/static/w-my.png">
+        <image class="images" slot="active-icon" src="@/static/y-my.png"></image>
+        <image class="images" slot="inactive-icon" src="@/static/w-my.png">
         </image>
       </u-tabbar-item>
     </u-tabbar>
@@ -60,5 +60,8 @@
 </script>
 
 <style lang="scss">
-
+  .images {
+    width: 42rpx;
+    height: 42rpx;
+  }
 </style>

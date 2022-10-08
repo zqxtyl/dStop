@@ -24,38 +24,8 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.account-detail {
-  background-color: #F5F5F5;
-  height: 1500rpx;
-}
-.account-detail .main {
-  margin: 20rpx;
-  background-color: #fff;
-  border-radius: 10rpx;
-}
-.account-detail .main .main-item {
-  width: 710rpx;
-  height: 100rpx;
-  padding: 34rpx 44rpx;
-  display: flex;
-  justify-content: space-between;
-}
-.account-detail .main .main-item .main-item-title text {
-  font-size: 28rpx;
-  font-weight: 700;
-}
-.account-detail .main .main-item .item-title-left {
-  margin-right: 90rpx;
-  text-align: center;
-}
-.account-detail .main .main-item .item-title-left .title-item-text {
-  font-size: 22rpx;
-  color: #B9B9B9;
-  margin-top: 18rpx;
-}
-.account-detail .main .main-item .item-main text {
-  font-size: 22rpx;
-  margin-top: 20rpx;
-  color: #B9B9B9;
+.images {
+  width: 42rpx;
+  height: 42rpx;
 }
 

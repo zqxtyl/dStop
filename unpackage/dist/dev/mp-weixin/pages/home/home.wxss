@@ -42,6 +42,10 @@
   justify-content: space-between;
   margin-top: 25rpx;
 }
+.app .main .mian-item image {
+  width: 220rpx;
+  height: 160rpx;
+}
 .app .goods {
   background-color: #F5F5F5;
 }

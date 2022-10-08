@@ -1,9 +1,9 @@
 <!-- 账户列表 -->
 <template>
   <view class="accountNumber">
-    <view style="height: 100rpx;">
-      <view style="padding-top: 28rpx;padding-left: 20rpx;">
-        <p style='font-weight: 700;font-size: 30rpx;'>抖音账号</p>
+    <view class="accountNumber-item">
+      <view class="accountNumber-title-item">
+        <view class="accountNumber-title-items">抖音账号</view>
       </view>
     </view>
 
@@ -12,35 +12,16 @@
         <view class="main-item-left">
         </view>
         <view class="main-item-right">
-          <view style="margin-left: 22rpx;  font-size: 30rpx;font-weight: 700;">
-            <p>账号名称</p>
+          <view class="main-item-right-box">
+            <view>账号名称</view>
           </view>
-          <view style="display: flex;align-items: center;margin-left: 22rpx;margin-top: 8rpx;">
-            <view style="display: flex;align-items: center;color: #888888;font-size: 25rpx;">
-              <img style='width: 40rpx;height: 36rpx;' src="@/static/qt.png" alt="">
-              <span style='margin-left: 8rpx;'>青铜等级</span>
+          <view class="right-box-title">
+            <view class="right-box-title-item">
+              <image src="@/static/qt.png" alt="">
+                <text>青铜等级</text>
             </view>
-            <view style="margin-left: 250rpx;color: #888888;font-size: 25rpx;">
-              <p>粉丝： 999</p>
-            </view>
-          </view>
-        </view>
-      </view>
-
-      <view class="main-item">
-        <view class="main-item-left">
-        </view>
-        <view class="main-item-right">
-          <view style="margin-left: 22rpx; font-size: 30rpx;font-weight: 700;">
-            <p>账号名称</p>
-          </view>
-          <view style="display: flex;align-items: center;margin-left: 22rpx;margin-top: 8rpx;">
-            <view style="display: flex;align-items: center;color: #888888;font-size: 25rpx;">
-              <img style='width: 40rpx;height: 36rpx;' src="@/static/by.png" alt="">
-              <span style='margin-left: 8rpx;'>白银等级</span>
-            </view>
-            <view style="margin-left: 250rpx;color: #888888;font-size: 25rpx;">
-              <p>粉丝： 999</p>
+            <view class="box-title-item-right">
+              <view>粉丝： 999</view>
             </view>
           </view>
         </view>
@@ -50,16 +31,35 @@
         <view class="main-item-left">
         </view>
         <view class="main-item-right">
-          <view style="margin-left: 22rpx; font-size: 30rpx;font-weight: 700;">
-            <p>账号名称</p>
+          <view class="main-item-right-box">
+            <view>账号名称</view>
           </view>
-          <view style="display: flex;align-items: center;margin-left: 22rpx;margin-top: 8rpx;">
-            <view style="display: flex;align-items: center;color: #888888;font-size: 25rpx;">
-              <img style='width: 40rpx;height: 36rpx;' src="@/static/hj.png" alt="">
-              <span style='margin-left: 8rpx;'>黄金等级</span>
+          <view class="right-box-title">
+            <view class="right-box-title-item">
+              <image src="@/static/qt.png" alt="">
+                <text>青铜等级</text>
             </view>
-            <view style="margin-left: 250rpx;color: #888888;font-size: 25rpx;">
-              <p>粉丝： 999</p>
+            <view class="box-title-item-right">
+              <view>粉丝： 999</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="main-item">
+        <view class="main-item-left">
+        </view>
+        <view class="main-item-right">
+          <view class="main-item-right-box">
+            <view>账号名称</view>
+          </view>
+          <view class="right-box-title">
+            <view class="right-box-title-item">
+              <image src="@/static/qt.png" alt="">
+                <text>青铜等级</text>
+            </view>
+            <view class="box-title-item-right">
+              <view>粉丝： 999</view>
             </view>
           </view>
         </view>
@@ -102,6 +102,20 @@
     background-color: #F5F5F5;
     height: 1500rpx;
 
+    .accountNumber-item {
+      height: 100rpx;
+
+      .accountNumber-title-item {
+        padding-top: 28rpx;
+        padding-left: 20rpx;
+
+        .accountNumber-title-items {
+          font-weight: 700;
+          font-size: 30rpx;
+        }
+      }
+    }
+
     .main {
       width: 710rpx;
       background-color: #fff;
@@ -126,6 +140,41 @@
 
         .main-item-right {
           margin-right: 22rpx;
+
+          .main-item-right-box {
+            margin-left: 22rpx;
+            font-size: 30rpx;
+            font-weight: 700;
+          }
+
+          .right-box-title {
+            display: flex;
+            align-items: center;
+            margin-left: 22rpx;
+            margin-top: 8rpx;
+
+            .right-box-title-item {
+              display: flex;
+              align-items: center;
+              color: #888888;
+              font-size: 25rpx;
+
+              image {
+                width: 40rpx;
+                height: 36rpx;
+              }
+
+              text {
+                margin-left: 8rpx;
+              }
+            }
+
+            .box-title-item-right {
+              margin-left: 250rpx;
+              color: #888888;
+              font-size: 25rpx;
+            }
+          }
         }
       }
     }

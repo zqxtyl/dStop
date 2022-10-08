@@ -17,13 +17,13 @@
     </view>
     <view class="main">
       <view class="mian-item">
-        <img style='width: 220rpx;height: 160rpx; ' src="@/static/dq-qt.png" alt="">
+        <image src="@/static/dq-qt.png" alt="">
       </view>
       <view class="mian-item">
-        <img style='width: 220rpx;height: 160rpx; ' src="@/static/xszd.png" alt="">
+        <image src="@/static/xszd.png" alt="">
       </view>
       <view class="mian-item">
-        <img style='width: 220rpx;height: 160rpx;' src="@/static/jjdr.png" alt="">
+        <image src="@/static/jjdr.png" alt="">
       </view>
     </view>
     <view class="goods">
@@ -73,7 +73,7 @@
       </view>
     </view>
     <!-- 弹层 -->
-    <view class="">
+    <view class="popupc">
       <u-popup :show="show" mode="center" @close="close" @open="open">
         <view v-for="(item,i) in screen.list" :key="i" style="width: 750rpx;display: felx;text-align: center;">
           <view :class="i==current?'blue':'black'" @click="changeTabs(i)"
@@ -139,6 +139,12 @@
       };
     },
     methods: {
+      async getRershToken() {
+        const {
+          data
+        } = await refreshToken()
+        console.log(data)
+      },
       goToDescription() {
         uni.navigateTo({
           url: `/subpkg/goods_detail/goods_detail`
@@ -239,7 +245,12 @@
       justify-content: space-between;
       margin-top: 25rpx;
 
-      .mian-item {}
+      .mian-item {
+        image {
+          width: 220rpx;
+          height: 160rpx;
+        }
+      }
     }
 
     .goods {

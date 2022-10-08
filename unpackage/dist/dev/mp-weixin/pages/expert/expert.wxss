@@ -35,16 +35,46 @@
   background-color: #fff;
   border-radius: 10rpx;
 }
+.expert .title .title-box {
+  display: flex;
+  justify-content: space-between;
+}
+.expert .title .title-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8rpx;
+}
 .expert .title .title-item {
   padding: 20rpx;
   text-align: center;
   margin-top: 16rpx;
   margin-left: 24rpx;
 }
+.expert .title .title-item .title-box-item {
+  font-size: 34rpx;
+  font-weight: 700;
+  font-family: PingFangSC-Medium, PingFang SC;
+}
+.expert .title .title-item .title-box-item-bottom {
+  margin-top: 15rpx;
+  font-size: 34rpx;
+  color: #676767;
+}
 .expert .title .title-right {
   padding: 20rpx;
   margin-top: 16rpx;
   margin-right: 20rpx;
+}
+.expert .title .title-right button {
+  background-color: #D33D34;
+  width: 212rpx;
+  height: 64rpx;
+  font-size: 28rpx;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .expert .title .title-bottom {
   margin-top: 26rpx;
@@ -53,6 +83,13 @@
   justify-content: space-between;
   align-items: center;
   text-align: center;
+}
+.expert .title .title-bottom .title-bottom-item .bottom-item {
+  font-size: 24rpx;
+  color: #888888;
+}
+.expert .title .title-bottom .title-bottom-item .bottom-text {
+  font-size: 28rpx;
 }
 .expert .main {
   width: 710rpx;
@@ -68,12 +105,34 @@
   display: flex;
   justify-content: space-between;
 }
+.expert .main .main-item .main-item-top .main-title {
+  color: #000000;
+  font-weight: 700;
+  font-size: 30rpx;
+}
+.expert .main .main-item .main-item-top-left {
+  display: flex;
+  align-items: center;
+  color: #676767;
+  font-size: 24rpx;
+}
 .expert .main .main-item .main-item-bottom {
   margin-top: 48rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
   text-align: center;
+}
+.expert .main .main-item .main-item-bottom .main-bottom {
+  color: #D33D34;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+.expert .main .main-item .main-item-bottom .main-bottom-item {
+  margin-top: 8rpx;
+  color: #888888;
+  font-size: 24rpx;
+  font-weight: 400;
 }
 .expert .footer {
   background-color: #D8D8D8;

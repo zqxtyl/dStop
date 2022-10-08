@@ -28,6 +28,17 @@
   background-color: #F5F5F5;
   height: 1500rpx;
 }
+.accountNumber .accountNumber-item {
+  height: 100rpx;
+}
+.accountNumber .accountNumber-item .accountNumber-title-item {
+  padding-top: 28rpx;
+  padding-left: 20rpx;
+}
+.accountNumber .accountNumber-item .accountNumber-title-item .accountNumber-title-items {
+  font-weight: 700;
+  font-size: 30rpx;
+}
 .accountNumber .main {
   width: 710rpx;
   background-color: #fff;
@@ -50,6 +61,35 @@
 }
 .accountNumber .main .main-item .main-item-right {
   margin-right: 22rpx;
+}
+.accountNumber .main .main-item .main-item-right .main-item-right-box {
+  margin-left: 22rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+.accountNumber .main .main-item .main-item-right .right-box-title {
+  display: flex;
+  align-items: center;
+  margin-left: 22rpx;
+  margin-top: 8rpx;
+}
+.accountNumber .main .main-item .main-item-right .right-box-title .right-box-title-item {
+  display: flex;
+  align-items: center;
+  color: #888888;
+  font-size: 25rpx;
+}
+.accountNumber .main .main-item .main-item-right .right-box-title .right-box-title-item image {
+  width: 40rpx;
+  height: 36rpx;
+}
+.accountNumber .main .main-item .main-item-right .right-box-title .right-box-title-item text {
+  margin-left: 8rpx;
+}
+.accountNumber .main .main-item .main-item-right .right-box-title .box-title-item-right {
+  margin-left: 250rpx;
+  color: #888888;
+  font-size: 25rpx;
 }
 .accountNumber .footer {
   margin-top: 100rpx;

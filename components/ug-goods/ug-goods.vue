@@ -2,32 +2,31 @@
   <view>
     <view class="goods">
       <view class="images">
-        <img @click='getGoodsDetail(list.id)' style='width: 350rpx;height: 350rpx;border-radius: 25rpx;'
-          :src="JSON.parse(list.imgs)" alt="">
+        <image @click='getGoodsDetail(list.id)' :src="JSON.parse(list.imgs)" alt="">
       </view>
       <view class="text">
         <view>
-          <p style='font-size: 25rpx; font-weight: 700;'>{{list.title||"商品名称"}}</p>
+          <view>{{list.title||"商品名称"}}</view>
         </view>
         <view class="text2">
           <view class="text3">
             <view class="box">
-              <p style='font-size: 20rpx; color: #fff;'>￥{{list.price||8}}</p>
-              <p style='font-size: 20rpx; color: #fff;'>平台补贴</p>
+              <view>￥{{list.price||8}}</view>
+              <view>平台补贴</view>
             </view>
             <view class="box2">
-              <p style='font-size: 20rpx; color: #fff;'>{{list.commission_rate||20}}%</p>
-              <p style='font-size: 20rpx; color: #fff;'>佣金</p>
+              <view>{{list.commission_rate||20}}%</view>
+              <view>佣金</view>
             </view>
           </view>
           <view>
           </view>
           <view>
             <view class="rightBox">
-              <p style='color: blue; font-size: 20rpx; font-weight: 700;'>剩余：{{list.leftTasks||300}}</p>
+              <view>剩余：{{list.leftTasks||300}}</view>
             </view>
             <view class="rightBox2">
-              <p style='color: #717171; font-size: 20rpx;'>到手价：{{list.price||3}}</p>
+              <view>到手价：{{list.price||3}}</view>
             </view>
           </view>
         </view>
@@ -57,24 +56,32 @@
         })
       }
     },
-    onLoad() {
-      console.log(list)
-    }
+    onLoad() {}
   }
 </script>
 
 <style lang="scss">
   .goods {
+    background-color: #fff;
+
     .images {
-      width: 350rpx;
-      border-radius: 25rpx;
+      width: 342rpx;
+      border-radius: 15rpx 15rpx 0 0;
+      background-color: #fff;
+
+      image {
+        width: 342rpx;
+        height: 342rpx;
+        border-radius: 15rpx;
+      }
     }
 
     .text {
-      width: 350rpx;
+      width: 342rpx;
       height: 110rpx;
-      border-radius: 25rpx;
+      border-radius: 10rpx;
       background-color: #fff;
+      font-size: 24rpx;
 
       .text2 {
         display: flex;
@@ -85,29 +92,41 @@
 
         .box {
           text-align: center;
-          width: 90rpx;
-          height: 55rpx;
+          width: 108rpx;
+          height: 62rpx;
           border-radius: 10rpx;
-          background-color: #F59A23;
-          margin-left: 8rpx;
+          font-size: 20rpx;
+          color: #fff;
+          background-color: #FFB700;
+          margin-top: 14rpx;
         }
 
         .box2 {
           text-align: center;
-          width: 90rpx;
-          height: 55rpx;
+          width: 72rpx;
+          height: 62rpx;
           border-radius: 10rpx;
-          background-color: #D9001B;
-          margin-left: 6rpx;
+          background-color: #F44333;
+          font-size: 20rpx;
+          color: #fff;
+          margin-left: 10rpx;
+          margin-top: 14rpx;
         }
 
         .rightBox {
           margin-left: 30rpx;
+          margin-top: 14rpx;
+          color: #D33D34;
+          font-size: 20rpx;
+          font-weight: 700;
         }
 
         .rightBox2 {
-          margin-left: 15rpx;
+          margin-left: 10rpx;
           width: 150rpx;
+          margin-top: 8rpx;
+          color: #888888;
+          font-size: 19rpx;
         }
       }
     }
